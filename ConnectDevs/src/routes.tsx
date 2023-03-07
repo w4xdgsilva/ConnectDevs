@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { Routes, Route } from 'react-router-dom';
-import { HomePage } from './src/pages/HomePage/index';
-import { LoginPage } from './src/pages/LoginPage/index';
-import { RegisterPage } from './src/pages/RegisterPage/index';
-import { ProfilePage } from './src/pages/ProfilePage/index';
+import { HomePage } from './pages/HomePage/index';
+import { LoginPage } from './pages/LoginPage/index';
+import { RegisterPage } from './pages/RegisterPage/index';
+import { ProfilePage } from './pages/ProfilePage/index';
 
 export const AppRouter = () => (
   <Routes>
