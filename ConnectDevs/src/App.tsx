@@ -1,9 +1,9 @@
-import { Router } from 'react-router-dom';
 import { Slide, ToastContainer } from 'react-toastify';
+import { AppRouter } from './routes';
 
 const App = () => (
     <>
-        <Router />
+        <AppRouter />
 		<ToastContainer theme='dark' transition={Slide}/>
     </>
 );
