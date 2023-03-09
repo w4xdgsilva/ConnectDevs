@@ -6,19 +6,11 @@ import { LoginPage } from './pages/LoginPage/index';
 import { RegisterPage } from './pages/RegisterPage/index';
 import { ProfilePage } from './pages/ProfilePage/index';
 import { ProtectedRoutes } from './components/ProtectedRoutes/ProtectedRoutes';
-import { PostProviders } from './providers/PostContext/PostContext';
 
 export const AppRouter = () => (
   <Routes>
     <Route path='/' element={<ProtectedRoutes />}>
-      <Route
-        index
-        element={
-          <PostProviders>
-            <HomePage />
-          </PostProviders>
-        }
-      />
+      <Route index element={<HomePage />} />
     </Route>
     <Route path='/login' element={<LoginPage />} />
     <Route path='/register' element={<RegisterPage />} />

@@ -1,3 +1,10 @@
 import React from 'react';
+import { CreatePostForm } from '../../components/Forms/CreatePost';
 
-export const HomePage = () => <div>index</div>;
+export const HomePage = () => (
+  <main>
+    <section>
+      <CreatePostForm />
+    </section>
+  </main>
+);

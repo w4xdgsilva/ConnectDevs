@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
-import { MdVisibility, MdVisibilityOff } from "react-icons/md"
+import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { StyledTextField } from '../../../styles/form';
 
 interface iInputProps {
-  label?: string
-  type: 'text' | 'email' | 'password'
-  placeholder: string
-  register: UseFormRegisterReturn<string>
-  hiddenButton: boolean
-  error?: FieldError
+  label?: string;
+  type: 'text' | 'email' | 'password';
+  placeholder: string;
+  register: UseFormRegisterReturn<string>;
+  hiddenButton: boolean;
+  multiline?: boolean;
+  rows?: number;
+  error?: FieldError;
 }
 
-export const Input = ({ label, type, placeholder, register, hiddenButton, error }: iInputProps) => {
-  const [isHidden, setIsHidden] = useState(true)
+export const Input = ({
+  label,
+  type,
+  placeholder,
+  register,
+  hiddenButton,
+  error,
+  multiline,
+  rows,
+}: iInputProps) => {
+  const [isHidden, setIsHidden] = useState(true);
 
   return (
     <fieldset>
@@ -22,6 +33,8 @@ export const Input = ({ label, type, placeholder, register, hiddenButton, error 
         type={type === 'password' && isHidden ? 'password' : 'text'}
         placeholder={placeholder}
         {...register}
+        multiline={multiline}
+        rows={rows}
       />
 
       {hiddenButton ? (
@@ -29,10 +42,8 @@ export const Input = ({ label, type, placeholder, register, hiddenButton, error 
           {isHidden ? <MdVisibility /> : <MdVisibilityOff />}
         </button>
       ) : null}
-      
-      {error ? <p>
-        {error.message}
-      </p> : null}
+
+      {error ? <p>{error.message}</p> : null}
     </fieldset>
-  )
+  );
 };
