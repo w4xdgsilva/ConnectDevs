@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 import { MdVisibility, MdVisibilityOff } from "react-icons/md"
-import { TextField } from "@mui/material"
+import { StyledTextField } from '../../../styles/form';
 
 interface iInputProps {
   label?: string
@@ -17,7 +17,7 @@ export const Input = ({ label, type, placeholder, register, hiddenButton, error 
 
   return (
     <fieldset>
-      <TextField
+      <StyledTextField
         label={label || ''}
         type={type === 'password' && isHidden ? 'password' : 'text'}
         placeholder={placeholder}
