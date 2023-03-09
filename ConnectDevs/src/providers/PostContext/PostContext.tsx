@@ -26,6 +26,9 @@ export const PostProviders = ({ children }: iDefaultProviderProps) => {
       toast.error('Ops! Algo deu errado...');
     }
   };
+  const RemovePost = async () => {
+    console.log('logica aqui');
+  };
   return (
     <PostContext.Provider value={{ CreatePost, posts }}>
       {children}
