@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 import { iUserContext, iDefaultProviderProps, iUserData, iApiUserResponseData, iDefaultErrorResponse, iRegisterFormData, iLoginFormData, iApiAutoLoginResponseData } from './@types';
@@ -12,6 +12,8 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   const [userData, setUserData] = useState<iUserData | null>(null)
 
   const navigate = useNavigate()
+  const location = useLocation()
+  const currentPage = location.pathname
 
   useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null')
@@ -25,7 +27,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
               Authorization: `Bearer ${userToken}`
             }
           })
-          
+
           setUserData({
             id: response.data.id,
             name: response.data.name,
@@ -33,7 +35,9 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
             username: response.data.username
           })
 
-          navigate('/')
+          if (currentPage !== '/profilePage') {
+            navigate('/')
+          }
 
         } catch (error) {
           localStorage.removeItem('@CONNECTDEVS:TOKEN')
