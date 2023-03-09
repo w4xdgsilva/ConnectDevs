@@ -14,6 +14,8 @@ export const AppRouter = () => (
     </Route>
     <Route path='/login' element={<LoginPage />} />
     <Route path='/register' element={<RegisterPage />} />
-    <Route path='/profilePage' element={<ProfilePage />} />
+    <Route path='/profilePage' element={<ProtectedRoutes />}>
+      <Route index element={<ProfilePage />} />
+    </Route>
   </Routes>
 );
