@@ -178,6 +178,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   const userLogout = () => {
     setUserData(null);
     localStorage.removeItem('@CONNECTDEVS:TOKEN');
+    localStorage.removeItem('@CONNECTDEVS:USER');
     navigate('/login');
   };
 
