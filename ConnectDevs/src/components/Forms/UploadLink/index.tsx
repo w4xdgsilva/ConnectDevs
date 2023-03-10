@@ -1,5 +1,28 @@
-import React from 'react';
+/* eslint-disable react/button-has-type */
+import React, { useContext } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { StyledFormLink } from './indexCSS';
+import {  iData, iInput } from '../../../providers/ProfileContext/@types'
+import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
 
-export const index = () => {
-  return <div>index</div>;
+export const Index = () => {
+  const userId = JSON.parse(localStorage.getItem('@CONNECTDEVS:USER') || 'null')
+  const { uploadLink } = useContext(ProfileContext);
+  const { register, handleSubmit } = useForm<iInput>();
+
+  const submit: SubmitHandler<iData> = (formData) => {
+    const data = {...formData, userId}
+    console.log(formData)
+    uploadLink(data)
+  };
+
+  return <div>
+              <StyledFormLink onSubmit={handleSubmit(submit)}>
+                <input type='text' 
+                 placeholder='Seu Link'
+                 {...register('link')}/>
+                 <button>Submit</button>
+              </StyledFormLink>       
+        </div>
+
 };

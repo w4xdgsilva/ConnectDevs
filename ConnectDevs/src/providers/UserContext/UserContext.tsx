@@ -33,7 +33,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
             username: response.data.username
           })
 
-          navigate('/')
+          navigate('/profilePage')
 
         } catch (error) {
           localStorage.removeItem('@CONNECTDEVS:TOKEN')
