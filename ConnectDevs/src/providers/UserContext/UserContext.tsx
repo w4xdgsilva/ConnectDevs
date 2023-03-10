@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { createContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-=======
-import { createContext, useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 import {
@@ -17,7 +12,7 @@ import {
   iLoginFormData,
   iApiAutoLoginResponseData,
   iUserId,
-  iGetUser
+  iGetUser,
 } from './@types';
 import { api } from '../../services/api';
 
@@ -27,21 +22,18 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState<iUserData | null>(null);
 
-<<<<<<< HEAD
   const navigate = useNavigate();
-=======
-  const navigate = useNavigate()
-  const location = useLocation()
-  const currentPage = location.pathname
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
+  const location = useLocation();
+  const currentPage = location.pathname;
 
   useEffect(() => {
     const userToken = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
     );
-    const userId = JSON.parse(
+    const user = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
+    const userId = user.id;
     if (userToken) {
       const autoLogin = async () => {
         try {
@@ -49,29 +41,17 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
             `/users/${userId}`,
             {
               headers: {
-                Authorization: `Bearer ${userToken}`
-              }
+                Authorization: `Bearer ${userToken}`,
+              },
             }
-<<<<<<< HEAD
           );
-=======
-          })
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
 
           setUserData({
             id: response.data.id,
             name: response.data.name,
             email: response.data.email,
-            username: response.data.username
-<<<<<<< HEAD
+            username: response.data.username,
           });
-=======
-          })
-
-          if (currentPage !== '/profilePage') {
-            navigate('/')
-          }
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
 
           navigate('/');
         } catch (error) {
@@ -98,12 +78,12 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         id: userId,
         name: response.data.user.name,
         email: response.data.user.email,
-        username: response.data.user.username
+        username: response.data.user.username,
       });
 
       localStorage.setItem(
         '@CONNECTDEVS:USER',
-        JSON.stringify(response.data.user.id)
+        JSON.stringify(response.data.user)
       );
       localStorage.setItem(
         '@CONNECTDEVS:TOKEN',
@@ -137,12 +117,12 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         id: userId,
         name: response.data.user.name,
         email: response.data.user.email,
-        username: response.data.user.username
+        username: response.data.user.username,
       });
 
       localStorage.setItem(
         '@CONNECTDEVS:USER',
-        JSON.stringify(response.data.user.id)
+        JSON.stringify(response.data.user)
       );
       localStorage.setItem(
         '@CONNECTDEVS:TOKEN',
@@ -206,7 +186,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         userLogin,
         userLogout,
         userData,
-        getUser
+        getUser,
       }}
     >
       {children}
