@@ -6,6 +6,7 @@ import { Input } from '../Input';
 import { iLoginFormData } from '../../../providers/UserContext/@types';
 import { UserContext } from '../../../providers/UserContext/UserContext';
 import Spinner from '../../Spinner/Spinner';
+import { StyledButton } from '../../../styles/button';
 
 export const LoginForm = () => {
   const {
@@ -38,9 +39,14 @@ export const LoginForm = () => {
         register={register('password')}
         error={errors.password}
       />
-      <button type='submit' disabled={isLoading}>
+      <StyledButton
+        $buttonSize='default'
+        $buttonStyle='blue'
+        type='submit'
+        disabled={isLoading}
+      >
         {isLoading ? <Spinner /> : 'Entrar'}
-      </button>
+      </StyledButton>
     </form>
   );
 };
