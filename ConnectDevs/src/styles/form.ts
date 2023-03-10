@@ -10,10 +10,17 @@ export const StyledForm = styled.form`
 export const StyledTextField = styled(TextField)`
 	width: 100%;
 	
-	input {
+	input,
+	textarea {
 		background-color: ${({ theme }) => theme.colors.gray50};
 		font-family: ${({ theme }) => theme.fonts.primary}, sans-serif;
 		color: ${({ theme }) => theme.colors.white};
+		font-family: 'Nunito', sans-serif;
+		border-radius: 16px;
+	}
+
+	input:-webkit-autofill,
+	textarea:-webkit-autofill {
 		border-radius: 16px;
 	}
 	
