@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
+import { StyledFieldset } from './style';
 import { StyledTextField } from '../../../styles/form';
 
 interface iInputProps {
@@ -27,7 +28,7 @@ export const Input = ({
   const [isHidden, setIsHidden] = useState(true);
 
   return (
-    <fieldset>
+    <StyledFieldset>
       <StyledTextField
         label={label || ''}
         type={type === 'password' && isHidden ? 'password' : 'text'}
@@ -44,6 +45,6 @@ export const Input = ({
       ) : null}
 
       {error ? <p>{error.message}</p> : null}
-    </fieldset>
+    </StyledFieldset>
   );
 };
