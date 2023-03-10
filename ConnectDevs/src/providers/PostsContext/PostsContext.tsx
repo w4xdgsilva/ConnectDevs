@@ -24,24 +24,33 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
         try {
           const response = await api.get('/posts', {
             headers: {
-              Authorization: `Bearer ${userToken}`,
-            },
+              Authorization: `Bearer ${userToken}`
+            }
           });
           setPosts(response.data);
-          console.log(posts);
         } catch (error) {
           console.error(error);
         }
       }
     };
     renderPosts();
-  }, []);
+  }, [posts]);
+
+  const userFormatted = (user: string) => {
+    const username = user;
+    const names = username.split(' ');
+    const letterA = names[0].slice(0, 1).toUpperCase();
+    const letterB = names[1].slice(0, 1).toUpperCase();
+    const displayName = letterA + letterB;
+
+    return displayName;
+  };
   const CreatePost = async (data: iPostBody) => {
     try {
       const response = await api.post('/posts', data, {
         headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
+          Authorization: `Bearer ${userToken}`
+        }
       });
       setPosts(response.data);
       toast.success('Post enviado com sucesso!');
@@ -49,8 +58,9 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
       toast.error('Ops! Algo deu errado...');
     }
   };
+
   return (
-    <PostsContext.Provider value={{ posts, CreatePost }}>
+    <PostsContext.Provider value={{ posts, CreatePost, userFormatted }}>
       {children}
     </PostsContext.Provider>
   );

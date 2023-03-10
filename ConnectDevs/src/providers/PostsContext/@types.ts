@@ -1,5 +1,6 @@
 export interface iPostContext {
   posts: iPostBody[];
+  userFormatted: (user: string) => string;
   CreatePost: (data: iPostBody) => Promise<void>;
 }
 
@@ -12,4 +13,5 @@ export interface iPostBody {
   text: string;
   userId: number;
   username: string;
+  id: number;
 }
