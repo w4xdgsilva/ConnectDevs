@@ -30,10 +30,10 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     const userToken = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
     );
-    const user = JSON.parse(
+    const userId = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
-    const userId = user.id;
+
     if (userToken) {
       const autoLogin = async () => {
         try {
