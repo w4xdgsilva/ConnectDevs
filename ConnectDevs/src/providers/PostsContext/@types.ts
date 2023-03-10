@@ -1,5 +1,6 @@
 export interface iPostContext {
   posts: iPostBody[];
+  userFormatted: (user: string) => string;
 }
 
 export interface iPostCardProp {
@@ -10,5 +11,5 @@ export interface iPostBody {
   title: string;
   text: string;
   userId?: number;
-  id?: number;
+  username: string;
 }

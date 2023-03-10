@@ -7,8 +7,9 @@ export const PostsList = () => {
 
   return posts.length > 0 ? (
     <ul>
-      {posts.map((post) => (
-        <PostCard key={post.id} card={post} />
+      {posts.map((post, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <PostCard key={index} card={post} />
       ))}
     </ul>
   ) : (

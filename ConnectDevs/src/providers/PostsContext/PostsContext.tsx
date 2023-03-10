@@ -27,16 +27,27 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
             }
           });
           setPosts(response.data);
-          console.log(posts);
         } catch (error) {
           console.error(error);
         }
       }
     };
     renderPosts();
-  }, []);
+  }, [posts]);
+
+  const userFormatted = (user: string) => {
+    const username = user;
+    const names = username.split(' ');
+    const letterA = names[0].slice(0, 1).toUpperCase();
+    const letterB = names[1].slice(0, 1).toUpperCase();
+    const displayName = letterA + letterB;
+
+    return displayName;
+  };
 
   return (
-    <PostsContext.Provider value={{ posts }}>{children}</PostsContext.Provider>
+    <PostsContext.Provider value={{ posts, userFormatted }}>
+      {children}
+    </PostsContext.Provider>
   );
 };

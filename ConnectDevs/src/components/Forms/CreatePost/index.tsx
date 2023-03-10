@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export const CreatePostForm = () => <div>index</div>;
-=======
 import React, { useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -16,7 +13,7 @@ export const CreatePostForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<iPostsData>({ resolver: yupResolver(postFormSchema) });
 
   const { CreatePost } = useContext(PostContext);
@@ -51,4 +48,3 @@ export const CreatePostForm = () => {
     </form>
   );
 };
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
