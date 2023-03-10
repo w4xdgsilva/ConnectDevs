@@ -14,6 +14,7 @@ export const StyledTextField = styled(TextField)`
 		background-color: ${({ theme }) => theme.colors.gray50};
 		font-family: ${({ theme }) => theme.fonts.primary}, sans-serif;
 		color: ${({ theme }) => theme.colors.white};
+		border-radius: 16px;
 	}
 	
 	label {
@@ -27,6 +28,7 @@ export const StyledTextField = styled(TextField)`
 	fieldset {
 		border-color: ${({ theme }) => theme.colors.gray50}!important;
 		outline-color: ${({ theme }) => theme.colors.gray50}!important;
+		border-radius: 16px;
 	}
 	
 	.Mui-focused {
