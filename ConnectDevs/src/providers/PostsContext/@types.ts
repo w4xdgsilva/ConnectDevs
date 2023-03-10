@@ -1,5 +1,6 @@
 export interface iPostContext {
   posts: iPostBody[];
+  CreatePost: (data: iPostBody) => Promise<void>;
 }
 
 export interface iPostCardProp {
@@ -9,6 +10,6 @@ export interface iPostCardProp {
 export interface iPostBody {
   title: string;
   text: string;
-  userId?: number;
-  id?: number;
+  userId: number;
+  username: string;
 }
