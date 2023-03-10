@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { iPostBody, iPostContext } from './@types';
 import { api } from '../../services/api';
 import { iDefaultProviderProps } from '../UserContext/@types';
@@ -44,9 +45,22 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
 
     return displayName;
   };
+  const CreatePost = async (data: iPostBody) => {
+    try {
+      const response = await api.post('/posts', data, {
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
+      setPosts(response.data);
+      toast.success('Post enviado com sucesso!');
+    } catch (error) {
+      toast.error('Ops! Algo deu errado...');
+    }
+  };
 
   return (
-    <PostsContext.Provider value={{ posts, userFormatted }}>
+    <PostsContext.Provider value={{ posts, CreatePost, userFormatted }}>
       {children}
     </PostsContext.Provider>
   );

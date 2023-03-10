@@ -2,20 +2,21 @@ import React, { useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { postFormSchema } from './PostFormSchema';
-import { iPostsData } from '../../../providers/PostContext/@types';
-import { PostContext } from '../../../providers/PostContext/PostContext';
+
 import { Input } from '../Input';
+import { iPostBody } from '../../../providers/PostsContext/@types';
+import { PostsContext } from '../../../providers/PostsContext/PostsContext';
 
 export const CreatePostForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<iPostsData>({ resolver: yupResolver(postFormSchema) });
+  } = useForm<iPostBody>({ resolver: yupResolver(postFormSchema) });
 
-  const { CreatePost } = useContext(PostContext);
+  const { CreatePost } = useContext(PostsContext);
 
-  const submitEvent: SubmitHandler<iPostsData> = (formData) => {
+  const submitEvent: SubmitHandler<iPostBody> = (formData) => {
     const user = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
