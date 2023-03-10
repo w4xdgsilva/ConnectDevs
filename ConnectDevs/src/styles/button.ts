@@ -38,7 +38,7 @@ export const StyledButtonCSS = css<IStyledButtonProps>`
         return css`
 					padding: 0 20px;
 					height: 35px;
-          font-size: 0.875rem;
+          			font-size: 0.875rem;
 				`
 		}
 	}}

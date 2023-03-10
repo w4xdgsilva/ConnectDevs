@@ -7,9 +7,6 @@ import { PostContext } from '../../../providers/PostContext/PostContext';
 import { Input } from '../Input';
 
 export const CreatePostForm = () => {
-  const userId = JSON.parse(
-    localStorage.getItem('@CONNECTDEVS:USER') || 'null'
-  );
   const {
     register,
     handleSubmit,
@@ -19,7 +16,14 @@ export const CreatePostForm = () => {
   const { CreatePost } = useContext(PostContext);
 
   const submitEvent: SubmitHandler<iPostsData> = (formData) => {
-    const data = { ...formData, userId };
+    const user = JSON.parse(
+      localStorage.getItem('@CONNECTDEVS:USER') || 'null'
+    );
+
+    const { username, id } = user;
+    const userId = id;
+    const data = { ...formData, userId, username };
+
     CreatePost(data);
   };
   return (

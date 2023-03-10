@@ -33,6 +33,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     const userId = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
+
     if (userToken) {
       const autoLogin = async () => {
         try {
@@ -86,7 +87,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
 
       localStorage.setItem(
         '@CONNECTDEVS:USER',
-        JSON.stringify(response.data.user.id)
+        JSON.stringify(response.data.user)
       );
       localStorage.setItem(
         '@CONNECTDEVS:TOKEN',
@@ -125,7 +126,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
 
       localStorage.setItem(
         '@CONNECTDEVS:USER',
-        JSON.stringify(response.data.user.id)
+        JSON.stringify(response.data.user)
       );
       localStorage.setItem(
         '@CONNECTDEVS:TOKEN',
