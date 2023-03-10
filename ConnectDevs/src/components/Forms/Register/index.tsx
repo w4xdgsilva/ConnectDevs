@@ -6,6 +6,7 @@ import { Input } from '../Input';
 import { iRegisterFormData } from '../../../providers/UserContext/@types';
 import { UserContext } from '../../../providers/UserContext/UserContext';
 import Spinner from '../../Spinner/Spinner';
+import { StyledButton } from '../../../styles/button';
 
 export const RegisterForm = () => {
   const {
@@ -62,9 +63,14 @@ export const RegisterForm = () => {
         register={register('confirmPassword')}
         error={errors.confirmPassword}
       />
-      <button type='submit' disabled={isLoading}>
+      <StyledButton
+        $buttonSize='default'
+        $buttonStyle='blue'
+        type='submit'
+        disabled={isLoading}
+      >
         {isLoading ? <Spinner /> : 'Cadastrar'}
-      </button>
+      </StyledButton>
     </form>
   );
 };

@@ -1,4 +1,3 @@
-import { PostProviders } from './PostContext/PostContext';
 import { iDefaultProviderProps } from './UserContext/@types';
 import { UserProvider } from './UserContext/UserContext';
 

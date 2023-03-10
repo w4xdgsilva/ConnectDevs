@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { createContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-=======
-import { createContext, useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 import {
@@ -27,13 +22,9 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState<iUserData | null>(null);
 
-<<<<<<< HEAD
   const navigate = useNavigate();
-=======
-  const navigate = useNavigate()
-  const location = useLocation()
-  const currentPage = location.pathname
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
+  const location = useLocation();
+  const currentPage = location.pathname;
 
   useEffect(() => {
     const userToken = JSON.parse(
@@ -42,6 +33,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     const userId = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
+
     if (userToken) {
       const autoLogin = async () => {
         try {
@@ -52,26 +44,18 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
                 Authorization: `Bearer ${userToken}`
               }
             }
-<<<<<<< HEAD
           );
-=======
-          })
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
 
           setUserData({
             id: response.data.id,
             name: response.data.name,
             email: response.data.email,
             username: response.data.username
-<<<<<<< HEAD
           });
-=======
-          })
 
           if (currentPage !== '/profilePage') {
-            navigate('/')
+            navigate('/');
           }
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
 
           navigate('/');
         } catch (error) {
@@ -103,7 +87,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
 
       localStorage.setItem(
         '@CONNECTDEVS:USER',
-        JSON.stringify(response.data.user.id)
+        JSON.stringify(response.data.user)
       );
       localStorage.setItem(
         '@CONNECTDEVS:TOKEN',
@@ -142,7 +126,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
 
       localStorage.setItem(
         '@CONNECTDEVS:USER',
-        JSON.stringify(response.data.user.id)
+        JSON.stringify(response.data.user)
       );
       localStorage.setItem(
         '@CONNECTDEVS:TOKEN',

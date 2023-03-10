@@ -1,28 +1,30 @@
-<<<<<<< HEAD
-export const CreatePostForm = () => <div>index</div>;
-=======
 import React, { useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { postFormSchema } from './PostFormSchema';
-import { iPostsData } from '../../../providers/PostContext/@types';
-import { PostContext } from '../../../providers/PostContext/PostContext';
+
 import { Input } from '../Input';
+import { iPostBody } from '../../../providers/PostsContext/@types';
+import { PostsContext } from '../../../providers/PostsContext/PostsContext';
 
 export const CreatePostForm = () => {
-  const userId = JSON.parse(
-    localStorage.getItem('@CONNECTDEVS:USER') || 'null'
-  );
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<iPostsData>({ resolver: yupResolver(postFormSchema) });
+    formState: { errors }
+  } = useForm<iPostBody>({ resolver: yupResolver(postFormSchema) });
 
-  const { CreatePost } = useContext(PostContext);
+  const { CreatePost } = useContext(PostsContext);
 
-  const submitEvent: SubmitHandler<iPostsData> = (formData) => {
-    const data = { ...formData, userId };
+  const submitEvent: SubmitHandler<iPostBody> = (formData) => {
+    const user = JSON.parse(
+      localStorage.getItem('@CONNECTDEVS:USER') || 'null'
+    );
+
+    const { username, id } = user;
+    const userId = id;
+    const data = { ...formData, userId, username };
+
     CreatePost(data);
   };
   return (
@@ -51,4 +53,3 @@ export const CreatePostForm = () => {
     </form>
   );
 };
->>>>>>> 3dfa3fcf4ccb3fa5b34733239cd2a4a7eb17d009
