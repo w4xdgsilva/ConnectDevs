@@ -12,7 +12,7 @@ import {
   iLoginFormData,
   iApiAutoLoginResponseData,
   iUserId,
-  iGetUser,
+  iGetUser
 } from './@types';
 import { api } from '../../services/api';
 
@@ -41,8 +41,8 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
             `/users/${userId}`,
             {
               headers: {
-                Authorization: `Bearer ${userToken}`,
-              },
+                Authorization: `Bearer ${userToken}`
+              }
             }
           );
 
@@ -51,10 +51,10 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
             name: response.data.name,
             email: response.data.email,
             username: response.data.username
-          })
+          });
 
           if (currentPage !== '/profilePage') {
-            navigate('/')
+            navigate('/');
           }
 
           navigate('/');
@@ -82,7 +82,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         id: userId,
         name: response.data.user.name,
         email: response.data.user.email,
-        username: response.data.user.username,
+        username: response.data.user.username
       });
 
       localStorage.setItem(
@@ -121,7 +121,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         id: userId,
         name: response.data.user.name,
         email: response.data.user.email,
-        username: response.data.user.username,
+        username: response.data.user.username
       });
 
       localStorage.setItem(
@@ -190,7 +190,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         userLogin,
         userLogout,
         userData,
-        getUser,
+        getUser
       }}
     >
       {children}
