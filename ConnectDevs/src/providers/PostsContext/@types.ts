@@ -13,4 +13,5 @@ export interface iPostBody {
   text: string;
   userId: number;
   username: string;
+  id: number;
 }
