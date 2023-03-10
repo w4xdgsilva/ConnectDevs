@@ -15,6 +15,7 @@ export const StyledButtonCSS = css<IStyledButtonProps>`
 	font-family: ${({ theme }) => theme.fonts.primary}, sans-serif;
 	font-weight: 700;
 	font-size: 1rem;
+	text-align: center;
 
 	border-radius: 8px;
 
