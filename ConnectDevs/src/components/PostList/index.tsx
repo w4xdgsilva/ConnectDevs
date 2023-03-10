@@ -7,9 +7,9 @@ export const PostsList = () => {
 
   return posts.length > 0 ? (
     <ul>
-      {posts.map((post) => (
-        <PostCard key={post.id} card={post} />
-      ))}
+      {posts.map((post) =>
+        post.username ? <PostCard key={post.id} card={post} /> : null
+      )}
     </ul>
   ) : (
     <p>Sem posts...</p>
