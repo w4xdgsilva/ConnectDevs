@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage/index';
 import { LoginPage } from './pages/LoginPage/index';
 import { RegisterPage } from './pages/RegisterPage/index';
 import { ProfilePage } from './pages/ProfilePage/index';
+import { NotFoundPage } from './pages/NotFoundPage/index';
 import { ProtectedRoutes } from './components/ProtectedRoutes/ProtectedRoutes';
 
 export const AppRouter = () => (
@@ -14,6 +15,9 @@ export const AppRouter = () => (
     </Route>
     <Route path='/login' element={<LoginPage />} />
     <Route path='/register' element={<RegisterPage />} />
-    <Route path='/profilePage' element={<ProfilePage />} />
+    <Route path='/profilePage' element={<ProtectedRoutes />}>
+      <Route index element={<ProfilePage />} />
+    </Route>
+    <Route path='*' element={<NotFoundPage />} />
   </Routes>
 );
