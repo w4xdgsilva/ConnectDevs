@@ -4,12 +4,14 @@ export const StyledLoginPage = styled.main`
     background: ${({ theme }) => theme.colors.gray100};
     display: flex;
     align-items: center;
-	min-width: 100vw;
+	min-width: 100%;
 	min-height: 100vh;
     padding: 68px;
+    overflow-x: hidden;
 
     .pageContainer {
         padding: 0;
+
     
         section {
             background-color: ${({ theme }) => theme.colors.gray70};
@@ -39,6 +41,7 @@ export const StyledLoginPage = styled.main`
             }
 
             a {
+                font-family: 'Nunito', sans-serif;
                 font-size: 0.875rem;
                 font-weight: 400;
                 text-align: center;
