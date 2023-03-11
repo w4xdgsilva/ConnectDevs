@@ -9,7 +9,7 @@ export const UserPostsList = () => {
   return posts.length > 0 ? (
     <ul>
       {posts.map((post) =>
-        post.username ? <PostCard key={post.id} card={post} /> : null
+        post.userId === user.id ? <PostCard key={post.id} card={post} /> : null
       )}
     </ul>
   ) : (
