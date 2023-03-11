@@ -33,9 +33,6 @@ export const StyledRegisterPage = styled.main`
             }
 
             form {
-                display: flex;
-                flex-direction: column;
-                gap: 25px;
                 width: 100%;
             }
 

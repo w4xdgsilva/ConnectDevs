@@ -7,6 +7,7 @@ import { iRegisterFormData } from '../../../providers/UserContext/@types';
 import { UserContext } from '../../../providers/UserContext/UserContext';
 import Spinner from '../../Spinner/Spinner';
 import { StyledButton } from '../../../styles/button';
+import { StyledForm } from '../../../styles/form';
 
 export const RegisterForm = () => {
   const {
@@ -22,7 +23,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submitEvent)}>
+    <StyledForm onSubmit={handleSubmit(submitEvent)}>
       <Input
         label='Name'
         placeholder='Name'
@@ -73,6 +74,6 @@ export const RegisterForm = () => {
       >
         {isLoading ? <Spinner /> : 'Cadastrar'}
       </StyledButton>
-    </form>
+    </StyledForm>
   );
 };

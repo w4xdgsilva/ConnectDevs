@@ -34,9 +34,6 @@ export const StyledLoginPage = styled.main`
             }
 
             form {
-                display: flex;
-                flex-direction: column;
-                gap: 25px;
                 width: 100%;
             }
 
