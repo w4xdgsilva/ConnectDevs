@@ -6,11 +6,14 @@ import {  iData, iInput } from '../../../providers/ProfileContext/@types'
 import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
 
 export const Form = () => {
-  const userId = JSON.parse(localStorage.getItem('@CONNECTDEVS:USER') || 'null')
+
   const { uploadLink } = useContext(ProfileContext);
   const { register, handleSubmit } = useForm<iInput>();
 
   const submit: SubmitHandler<iData> = (formData) => {
+    const user =  JSON.parse(
+      localStorage.getItem('@CONNECTDEVS:USER') || 'null')
+      const userId = user.id
     const data = {...formData, userId}
     console.log(formData)
     uploadLink(data)

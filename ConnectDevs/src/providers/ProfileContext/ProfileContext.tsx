@@ -1,24 +1,28 @@
-import { createContext, useState } from 'react'
-import { iProfileContext, iDefaultProviderProps, iData, iId } from './@types'
+import { createContext, useEffect, useState } from 'react'
+import { iProfileContext, iDefaultProviderProps, iData, iId, iLinks } from './@types'
 import { api } from '../../services/api'
+
 
 
 export const ProfileContext = createContext({} as iProfileContext)
 
 export const ProfileProvider = ({children}: iDefaultProviderProps) => {
 
-    const [links, setLinks] = useState({})
+    const [links, setLinks] = useState<iLinks[]>([])
 
     const uploadLink = async (data:iData) => {
+
         const userToken = JSON.parse(localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null')
-        console.log(userToken)
+        
         try{
             const response = await api.post('/links', data, {
                 headers: {
                     Authorization: `Bearer ${userToken}`,
                   },
             })
-            console.log(response)
+            console.log(response.data)
+            setLinks(response.data)
+            renderLink()
         } catch(error){
             console.log(error)
         }
@@ -27,34 +31,49 @@ export const ProfileProvider = ({children}: iDefaultProviderProps) => {
     const deleteLink = async (id: iId) => {
         const userToken = JSON.parse(localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null')
         try{
-            const response = await api.delete(`/link${id}`, {
+            const response = await api.delete(`/links/${id}`, {
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${userToken}`,
                   },
             })
             console.log(response)
+            renderLink()
         }
-        catch{
-            console.log('erro delete link')
+        catch(error){
+            console.log(error)
         }
     }
 
+    useEffect(() => {
+        renderLink()
+    }, [])
+
     const renderLink = async () => {
+        const Token = JSON.parse(localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null')
         try{
-            const response = await api.get('/link')
+            const response = await api.get('/links',{
+                headers: {
+                    Authorization: `Bearer ${Token}`,
+                  },
+            })
             setLinks(response.data)
         }
-        catch{
-            console.log('erro render link')
+        catch(error){
+            console.log(error)
         }
     }
+
+
+   
+
+
 
     return(
         <ProfileContext.Provider value={{
             uploadLink,
             deleteLink,
-            renderLink,
             links
+            
         }}>
             {children}
         </ProfileContext.Provider>

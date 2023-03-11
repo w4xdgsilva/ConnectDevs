@@ -1,15 +1,21 @@
+import { number } from "yup"
+
 export interface iProfileContext {
     uploadLink: (data:iData ) => Promise<void>
     deleteLink: (id:iId ) => Promise<void>
-    renderLink: () => Promise<void>
-    links: iLinks
+    links: iLinks[]
 
 }
 
-interface iLinks{
+export interface iItem{
+    item: string
+}
+
+export interface iLinks{
     link:string
         userId: number
         id: number
+       
 }
 
 export interface iDefaultProviderProps {
