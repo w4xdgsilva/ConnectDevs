@@ -30,9 +30,10 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     const userToken = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
     );
-    const userId = JSON.parse(
+    const newId = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
+    const userId = newId?.id
 
 
     if (userToken) {
@@ -58,11 +59,11 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
             navigate('/');
           }
 
-          navigate('/');
         } catch (error) {
           localStorage.removeItem('@CONNECTDEVS:TOKEN');
           localStorage.removeItem('@CONNECTDEVS:USER');
           setUserData(null);
+          navigate('/login');
         }
       };
 
@@ -179,6 +180,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   const userLogout = () => {
     setUserData(null);
     localStorage.removeItem('@CONNECTDEVS:TOKEN');
+    localStorage.removeItem('@CONNECTDEVS:USER');
     navigate('/login');
   };
 
