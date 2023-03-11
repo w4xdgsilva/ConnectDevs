@@ -1,9 +1,18 @@
 import { useContext } from 'react';
 import { PostsContext } from '../../providers/PostsContext/PostsContext';
-import { UserContext } from '../../providers/UserContext/UserContext';
+import { PostCard } from '../PostList/PostCard';
 
 export const UserPostsList = () => {
   const { posts } = useContext(PostsContext);
-  const { userData } = useContext(UserContext);
-  return <div>UserPostsList</div>;
+  const user = JSON.parse(localStorage.getItem('@CONNECTDEVS:USER') || 'null');
+  console.log(posts);
+  return posts.length > 0 ? (
+    <ul>
+      {posts.map((post) =>
+        post.username ? <PostCard key={post.id} card={post} /> : null
+      )}
+    </ul>
+  ) : (
+    <p>Você ainda não possui nenhum post. Crie seu primeiro post!</p>
+  );
 };
