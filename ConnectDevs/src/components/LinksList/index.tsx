@@ -1,5 +1,13 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { ProfileContext } from '../../providers/ProfileContext/ProfileContext';
 
-export const index = () => {
-  return <div>index</div>;
+export const LinksList = () => {
+  
+  const { links } = useContext(ProfileContext);
+
+  
+  return(
+    <div>index</div>
+  )
+
 };

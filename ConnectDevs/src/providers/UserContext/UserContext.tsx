@@ -34,6 +34,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
 
+
     if (userToken) {
       const autoLogin = async () => {
         try {

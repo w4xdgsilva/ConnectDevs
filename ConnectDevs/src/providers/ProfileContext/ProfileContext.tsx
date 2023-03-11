@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import { iProfileContext, iDefaultProviderProps, iData, iId } from './@types'
 import { api } from '../../services/api'
 
@@ -6,6 +6,8 @@ import { api } from '../../services/api'
 export const ProfileContext = createContext({} as iProfileContext)
 
 export const ProfileProvider = ({children}: iDefaultProviderProps) => {
+
+    const [links, setLinks] = useState({})
 
     const uploadLink = async (data:iData) => {
         const userToken = JSON.parse(localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null')
@@ -23,11 +25,10 @@ export const ProfileProvider = ({children}: iDefaultProviderProps) => {
     }
 
     const deleteLink = async (id: iId) => {
-        const token = window.localStorage.getItem('@CONNECTDEVS:TOKEN')
+        const userToken = JSON.parse(localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null')
         try{
             const response = await api.delete(`/link${id}`, {
                 headers: {
-                    'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                   },
             })
@@ -41,7 +42,7 @@ export const ProfileProvider = ({children}: iDefaultProviderProps) => {
     const renderLink = async () => {
         try{
             const response = await api.get('/link')
-            console.log(response)
+            setLinks(response.data)
         }
         catch{
             console.log('erro render link')
@@ -52,7 +53,8 @@ export const ProfileProvider = ({children}: iDefaultProviderProps) => {
         <ProfileContext.Provider value={{
             uploadLink,
             deleteLink,
-            renderLink
+            renderLink,
+            links
         }}>
             {children}
         </ProfileContext.Provider>

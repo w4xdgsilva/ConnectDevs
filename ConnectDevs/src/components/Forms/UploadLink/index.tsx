@@ -1,11 +1,11 @@
 /* eslint-disable react/button-has-type */
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { StyledFormLink } from './indexCSS';
 import {  iData, iInput } from '../../../providers/ProfileContext/@types'
 import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
 
-export const Index = () => {
+export const Form = () => {
   const userId = JSON.parse(localStorage.getItem('@CONNECTDEVS:USER') || 'null')
   const { uploadLink } = useContext(ProfileContext);
   const { register, handleSubmit } = useForm<iInput>();

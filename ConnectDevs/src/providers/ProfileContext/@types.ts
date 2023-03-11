@@ -2,7 +2,14 @@ export interface iProfileContext {
     uploadLink: (data:iData ) => Promise<void>
     deleteLink: (id:iId ) => Promise<void>
     renderLink: () => Promise<void>
+    links: iLinks
 
+}
+
+interface iLinks{
+    link:string
+        userId: number
+        id: number
 }
 
 export interface iDefaultProviderProps {
