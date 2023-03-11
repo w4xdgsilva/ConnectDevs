@@ -44,6 +44,8 @@ export const LoginForm = () => {
         $buttonStyle='blue'
         type='submit'
         disabled={isLoading}
+        title='Entrar na conta'
+        aria-label='Entrar na conta'
       >
         {isLoading ? <Spinner /> : 'Entrar'}
       </StyledButton>
