@@ -1,4 +1,4 @@
-import { TextField } from '@mui/material'
+import { TextField, TextareaAutosize } from '@mui/material'
 import styled from 'styled-components'
 
 export const StyledForm = styled.form`
@@ -7,30 +7,50 @@ export const StyledForm = styled.form`
 	gap: 25px;
 `
 
-export const StyledTextField = styled(TextField)`
-	width: 100%;
+export const StyledTextArea = styled(TextareaAutosize)`
+	background-color: ${({ theme }) => theme.colors.gray50};
+	font-family: ${({ theme }) => theme.fonts.primary}, sans-serif;
+	border-color: ${({ theme }) => theme.colors.gray50}!important;
+	outline-color: ${({ theme }) => theme.colors.gray50}!important;
+	color: ${({ theme }) => theme.colors.white};
+	font-family: 'Nunito', sans-serif;
+	font-weight: 500;
+	border-radius: 16px;
+	padding: 16px 14px;
+	transition: 0.6;
+	resize: none;
 	
-	input,
-	textarea {
+	
+	&::placeholder {
+		color: ${({ theme }) => theme.colors.white};
+		font-weight: 400;
+	}
+	
+	&:focus {
+		border-color: ${({ theme }) => theme.colors.white}!important;
+		outline-color: ${({ theme }) => theme.colors.white}!important;
+	}
+	
+	&:focus::placeholder {
+		color: #8D9296;
+		font-weight: 500;
+	}
+
+	&:-webkit-autofill {
+		border-radius: 16px;
+	}
+`
+
+export const StyledTextField = styled(TextField)`
+	input {
 		background-color: ${({ theme }) => theme.colors.gray50};
 		font-family: ${({ theme }) => theme.fonts.primary}, sans-serif;
 		color: ${({ theme }) => theme.colors.white};
 		font-family: 'Nunito', sans-serif;
 		border-radius: 16px;
-		width: 100%;
 	}
 
-	.MuiInputBase-multiline {
-		padding: 0;
-	}
-
-	textarea {
-		padding: 18px 0 0 14px;
-		height: 56px;
-	}
-
-	input:-webkit-autofill,
-	textarea:-webkit-autofill {
+	input:-webkit-autofill {
 		border-radius: 16px;
 	}
 	
