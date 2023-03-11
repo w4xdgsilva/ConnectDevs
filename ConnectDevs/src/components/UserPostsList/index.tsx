@@ -1,14 +1,15 @@
 import { useContext } from 'react';
-import { PostsContext } from '../../providers/PostsContext/PostsContext';
+import { ProfileContext } from '../../providers/ProfileContext/ProfileContext';
+
 import { PostCard } from '../PostList/PostCard';
 
 export const UserPostsList = () => {
-  const { posts } = useContext(PostsContext);
+  const { userPosts } = useContext(ProfileContext);
   const user = JSON.parse(localStorage.getItem('@CONNECTDEVS:USER') || 'null');
-  console.log(posts);
-  return posts.length > 0 ? (
+  console.log(userPosts);
+  return userPosts.length > 0 ? (
     <ul>
-      {posts.map((post) =>
+      {userPosts.map((post) =>
         post.userId === user.id ? <PostCard key={post.id} card={post} /> : null
       )}
     </ul>
