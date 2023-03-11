@@ -3,6 +3,7 @@ import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { StyledFieldset } from './style';
 import { StyledTextField } from '../../../styles/form';
+import { StyledParagraph } from '../../../styles/typography';
 
 interface iInputProps {
   label?: string;
@@ -10,8 +11,6 @@ interface iInputProps {
   placeholder: string;
   register: UseFormRegisterReturn<string>;
   hiddenButton: boolean;
-  multiline?: boolean;
-  rows?: number;
   error?: FieldError;
 }
 
@@ -22,8 +21,6 @@ export const Input = ({
   register,
   hiddenButton,
   error,
-  multiline,
-  rows,
 }: iInputProps) => {
   const [isHidden, setIsHidden] = useState(true);
 
@@ -34,8 +31,6 @@ export const Input = ({
         type={type === 'password' && isHidden ? 'password' : 'text'}
         placeholder={placeholder}
         {...register}
-        multiline={multiline}
-        rows={rows}
       />
 
       {hiddenButton ? (
@@ -44,7 +39,7 @@ export const Input = ({
         </button>
       ) : null}
 
-      {error ? <p>{error.message}</p> : null}
+      {error ? <StyledParagraph>{error.message}</StyledParagraph> : null}
     </StyledFieldset>
   );
 };
