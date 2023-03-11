@@ -35,6 +35,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     );
     const userId = newId?.id
 
+
     if (userToken) {
       const autoLogin = async () => {
         try {

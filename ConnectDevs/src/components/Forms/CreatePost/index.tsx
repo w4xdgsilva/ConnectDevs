@@ -6,6 +6,7 @@ import { postFormSchema } from './PostFormSchema';
 import { Input } from '../Input';
 import { iPostBody } from '../../../providers/PostsContext/@types';
 import { PostsContext } from '../../../providers/PostsContext/PostsContext';
+import { TextArea } from '../TextArea';
 
 export const CreatePostForm = () => {
   const {
@@ -37,15 +38,12 @@ export const CreatePostForm = () => {
         error={errors.title}
         hiddenButton={false}
       />
-      <Input
+      <TextArea
         label='Texto'
         placeholder='Digite aqui seu post'
-        type='text'
         register={register('text')}
         error={errors.text}
-        hiddenButton={false}
-        multiline
-        rows={2}
+        minRows={2}
       />
       <button type='submit'>Enviar</button>
     </form>
