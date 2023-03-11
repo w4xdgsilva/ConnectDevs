@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react';
 import { UserContext } from '../../providers/UserContext/UserContext';
 import { StyledButton } from '../../styles/button';
@@ -24,3 +25,4 @@ export const Header = () => {
     </header>
   )
 };
+
