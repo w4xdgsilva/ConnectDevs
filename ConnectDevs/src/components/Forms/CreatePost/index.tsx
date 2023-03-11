@@ -36,8 +36,6 @@ export const CreatePostForm = () => {
         register={register('title')}
         error={errors.title}
         hiddenButton={false}
-        multiline={false}
-        rows={0}
       />
       <Input
         label='Texto'
