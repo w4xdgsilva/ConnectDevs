@@ -68,6 +68,8 @@ export const RegisterForm = () => {
         $buttonStyle='blue'
         type='submit'
         disabled={isLoading}
+        title='Criar conta'
+        aria-label='Criar conta'
       >
         {isLoading ? <Spinner /> : 'Cadastrar'}
       </StyledButton>

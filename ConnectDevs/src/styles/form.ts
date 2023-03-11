@@ -17,6 +17,16 @@ export const StyledTextField = styled(TextField)`
 		color: ${({ theme }) => theme.colors.white};
 		font-family: 'Nunito', sans-serif;
 		border-radius: 16px;
+		width: 100%;
+	}
+
+	.MuiInputBase-multiline {
+		padding: 0;
+	}
+
+	textarea {
+		padding: 18px 0 0 14px;
+		height: 56px;
 	}
 
 	input:-webkit-autofill,
