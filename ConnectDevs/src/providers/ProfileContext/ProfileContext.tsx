@@ -6,15 +6,20 @@ import {
   iData,
   iId,
   iLinks,
+  iUserPost,
 } from './@types';
 import { api } from '../../services/api';
-import { iPostBody } from '../PostsContext/@types';
 
 export const ProfileContext = createContext({} as iProfileContext);
 
 export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
   const [links, setLinks] = useState<iLinks[]>([]);
-  const [userPosts, setUserPosts] = useState<iPostBody[]>([]);
+  const [userPosts, setUserPosts] = useState<iUserPost[]>([]);
+  const [modalAdd, setModalAdd] = useState(false);
+  const [editPost, setEditPost] = useState<iUserPost[]>([]);
+  const Token = JSON.parse(
+    localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
+  );
 
   const uploadLink = async (data: iData) => {
     const userToken = JSON.parse(
@@ -58,9 +63,6 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
   }, []);
 
   const renderLink = async () => {
-    const Token = JSON.parse(
-      localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
-    );
     try {
       const response = await api.get('/links', {
         headers: {
@@ -74,9 +76,6 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
   };
 
   const renderPosts = async () => {
-    const Token = JSON.parse(
-      localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
-    );
     try {
       const response = await api.get('/posts', {
         headers: {
@@ -89,16 +88,60 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
-  return (
-    <ProfileContext.Provider
-      value={{
-        uploadLink,
-        deleteLink,
-        links,
-        userPosts,
-      }}
-    >
-      {children}
-    </ProfileContext.Provider>
-  );
+  const UpdatePost = async (data: iUserPost, postId: iId) => {
+    try {
+      const response = await api.patch(`/posts/${postId}`, data, {
+        headers: {
+          Authorization: `Bearer ${Token}`,
+        },
+      });
+
+      const newPosts = userPosts.map((post) => {
+        if (Number(postId) === post.id) {
+          return { ...post, ...data };
+          // eslint-disable-next-line no-else-return
+        } else {
+          return post;
+        }
+      });
+      toast.success('Post editado');
+      setEditPost(newPosts);
+      renderPosts();
+    } catch (error) {
+      toast.error('Ops! Algo deu errado...');
+    }
+
+    const removePost = async (PostId: iId) => {
+      try {
+        const response = await api.delete(`/posts/${PostId}`, {
+          headers: {
+            Authorization: `Bearer ${Token}`,
+          },
+        });
+        toast.success('Post excluido');
+        renderPosts();
+      } catch (error) {
+        toast.error('Ops!Algo deu errado...');
+      }
+    };
+
+    return (
+      <ProfileContext.Provider
+        value={{
+          uploadLink,
+          deleteLink,
+          links,
+          userPosts,
+
+          removePost,
+          editPost,
+          setEditPost,
+          modalAdd,
+          setModalAdd,
+        }}
+      >
+        {children}
+      </ProfileContext.Provider>
+    );
+  };
 };
