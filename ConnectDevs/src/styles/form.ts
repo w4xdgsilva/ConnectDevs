@@ -17,6 +17,7 @@ export const StyledTextArea = styled(TextareaAutosize)`
 	font-weight: 500;
 	border-radius: 16px;
 	padding: 16px 14px;
+	width: 100%;
 	transition: 0.6;
 	resize: none;
 	
@@ -42,6 +43,8 @@ export const StyledTextArea = styled(TextareaAutosize)`
 `
 
 export const StyledTextField = styled(TextField)`
+	width: 100%;
+
 	input {
 		background-color: ${({ theme }) => theme.colors.gray50};
 		font-family: ${({ theme }) => theme.fonts.primary}, sans-serif;
