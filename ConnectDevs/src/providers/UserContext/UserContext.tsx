@@ -59,6 +59,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
             navigate('/');
           }
         } catch (error) {
+          console.error(error);
           localStorage.removeItem('@CONNECTDEVS:TOKEN');
           localStorage.removeItem('@CONNECTDEVS:USER');
           setUserData(null);
@@ -97,6 +98,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       navigate('/login');
       toast.success('Cadastro realizado com sucesso!');
     } catch (error) {
+      console.error(error);
       const currentError = error as AxiosError<IDefaultErrorResponse>;
 
       const errorMessage = currentError.response?.data;
@@ -136,6 +138,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       navigate('/');
       toast.success('Login realizado com sucesso!');
     } catch (error) {
+      console.error(error);
       const currentError = error as AxiosError<IDefaultErrorResponse>;
 
       const errorMessage = currentError.response?.data;
