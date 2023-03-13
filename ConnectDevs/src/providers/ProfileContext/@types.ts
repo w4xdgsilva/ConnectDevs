@@ -1,11 +1,16 @@
-import { number } from 'yup';
 import { iPostBody } from '../PostsContext/@types';
 
 export interface iProfileContext {
-  uploadLink: (data: iData) => Promise<void>;
-  deleteLink: (id: iId) => Promise<void>;
   links: iLinks[];
   userPosts: iPostBody[];
+  editPost: iUserPost[] | null;
+  setEditPost: React.Dispatch<React.SetStateAction<iUserPost[] | null>>;
+  modalAdd: boolean;
+  setModalAdd: React.Dispatch<React.SetStateAction<boolean>>;
+  uploadLink: (data: iData) => Promise<void>;
+  deleteLink: (id: iId) => Promise<void>;
+  UpdatePost: (data: iUserPost, postId: iId) => Promise<void>;
+  removePost: (PostId: iId) => Promise<void>;
 }
 
 export interface iItem {
@@ -35,4 +40,12 @@ export interface iInput {
   link: string;
   data: iData;
   userId: number;
+}
+
+export interface iUserPost {
+  title: string;
+  text: string;
+  userId: number;
+  username: string;
+  id: number;
 }

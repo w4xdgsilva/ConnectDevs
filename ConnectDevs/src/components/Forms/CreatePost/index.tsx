@@ -14,7 +14,7 @@ export const CreatePostForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<iPostBody>({ resolver: yupResolver(postFormSchema) });
 
   const { CreatePost } = useContext(PostsContext);
@@ -42,7 +42,6 @@ export const CreatePostForm = () => {
           hiddenButton={false}
         />
         <TextArea
-          label='Texto'
           placeholder='Digite aqui seu post'
           register={register('text')}
           error={errors.text}
