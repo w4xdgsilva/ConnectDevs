@@ -33,8 +33,8 @@ export const LoginForm = () => {
         error={errors.email}
       />
       <Input
-        label='Password'
-        placeholder='Password'
+        label='Senha'
+        placeholder='Senha'
         type='password'
         hiddenButton
         register={register('password')}
