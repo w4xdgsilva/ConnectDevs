@@ -1,13 +1,13 @@
 import { createContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { iPostBody, iPostContext } from './@types';
+import { IPostBody, IPostContext } from './@types';
 import { api } from '../../services/api';
-import { iDefaultProviderProps } from '../UserContext/@types';
+import { IDefaultProviderProps } from '../UserContext/@types';
 
-export const PostsContext = createContext({} as iPostContext);
+export const PostsContext = createContext({} as IPostContext);
 
-export const PostsProvider = ({ children }: iDefaultProviderProps) => {
-  const [posts, setPosts] = useState<iPostBody[]>([]);
+export const PostsProvider = ({ children }: IDefaultProviderProps) => {
+  const [posts, setPosts] = useState<IPostBody[]>([]);
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(0);
   const userToken = JSON.parse(
@@ -44,7 +44,7 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
 
     return displayName;
   };
-  const CreatePost = async (data: iPostBody) => {
+  const createPost = async (data: IPostBody) => {
     try {
       const response = await api.post('/posts', data, {
         headers: {
@@ -63,7 +63,7 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
     <PostsContext.Provider
       value={{
         posts,
-        CreatePost,
+        createPost,
         userFormatted,
         liked,
         setLiked,
