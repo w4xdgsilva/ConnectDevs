@@ -36,7 +36,8 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
       setLinks(response.data);
       renderLink();
     } catch (error) {
-      console.log(error);
+      console.error(error);
+
     }
   };
 
@@ -53,7 +54,8 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
 
       renderLink();
     } catch (error) {
-      console.log(error);
+      console.error(error);
+
     }
   };
 
@@ -72,7 +74,8 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
       });
       setLinks(response.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+
     }
   };
 
@@ -85,6 +88,7 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
       });
       setUserPosts(response.data);
     } catch (error) {
+      console.error(error);
       toast.error('Ops! Algo deu errado...');
     }
   };
@@ -111,6 +115,7 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
       setModalAdd(false);
       renderPosts();
     } catch (error) {
+      console.error(error);
       toast.error('Ops! Algo deu errado...');
     }
   };
@@ -126,6 +131,7 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
       setModalAdd(false);
       renderPosts();
     } catch (error) {
+      console.error(error);
       toast.error('Ops!Algo deu errado...');
     }
   };
