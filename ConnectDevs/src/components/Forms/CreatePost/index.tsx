@@ -31,7 +31,6 @@ export const CreatePostForm = () => {
     CreatePost(data);
   };
   return (
-
     <StyledContainer containerWidth={1250}>
       <form onSubmit={handleSubmit(submitEvent)}>
         <Input
@@ -41,25 +40,18 @@ export const CreatePostForm = () => {
           register={register('title')}
           error={errors.title}
           hiddenButton={false}
-          multiline={false}
-          rows={0}
         />
-        <Input
+        <TextArea
           label='Texto'
           placeholder='Digite aqui seu post'
-          type='text'
           register={register('text')}
           error={errors.text}
-          hiddenButton={false}
-          multiline
-          rows={2}
+          minRows={4}
         />
         <StyledButton $buttonSize='medium' $buttonStyle='blue' type='submit'>
           Enviar
         </StyledButton>
       </form>
     </StyledContainer>
-
-
   );
 };
