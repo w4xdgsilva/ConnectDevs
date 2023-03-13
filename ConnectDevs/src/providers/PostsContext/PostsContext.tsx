@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { iPostBody, iPostContext } from './@types';
 import { api } from '../../services/api';
@@ -31,6 +31,9 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
       }
     }
   };
+  useEffect(() => {
+    renderPosts();
+  }, []);
 
   const userFormatted = (user: string) => {
     const username = user;
