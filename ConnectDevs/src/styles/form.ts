@@ -18,6 +18,7 @@ export const StyledTextArea = styled(TextareaAutosize)`
 	border-radius: 16px;
 	padding: 16px 14px;
 	width: 100%;
+	max-height: 134px;
 	transition: 0.6;
 	resize: none;
 	
