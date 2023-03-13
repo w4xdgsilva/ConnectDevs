@@ -47,7 +47,13 @@ export const CreatePostForm = () => {
           error={errors.text}
           minRows={4}
         />
-        <StyledButton $buttonSize='medium' $buttonStyle='blue' type='submit'>
+        <StyledButton
+          $buttonSize='medium'
+          $buttonStyle='blue'
+          type='submit'
+          title='Criar publicação'
+          aria-label='Criar publicação'
+        >
           Enviar
         </StyledButton>
       </form>

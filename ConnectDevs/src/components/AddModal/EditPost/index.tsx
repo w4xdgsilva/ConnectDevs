@@ -33,8 +33,20 @@ export const EditPost = () => {
         error={errors.text}
         minRows={2}
       />
-      <button type='submit'>Enviar</button>
-      <button type='button'>Excluir</button>
+      <button
+        type='submit'
+        title='Editar publicação'
+        aria-label='Editar publicação'
+      >
+        Enviar
+      </button>
+      <button
+        type='button'
+        title='Remover publicação'
+        aria-label='Remover publicação'
+      >
+        Excluir
+      </button>
     </form>
   );
 };
