@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import {
   iProfileContext,
   iDefaultProviderProps,
@@ -7,11 +8,14 @@ import {
   iLinks,
 } from './@types';
 import { api } from '../../services/api';
+import { iPostBody } from '../PostsContext/@types';
 
 export const ProfileContext = createContext({} as iProfileContext);
 
 export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
   const [links, setLinks] = useState<iLinks[]>([]);
+
+  const [userPosts, setUserPosts] = useState<iPostBody[]>([]);
 
   const uploadLink = async (data: iData) => {
     const userToken = JSON.parse(
@@ -51,6 +55,8 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
 
   useEffect(() => {
     renderLink();
+
+    renderPosts();
   }, []);
 
   const renderLink = async () => {
@@ -69,12 +75,29 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
+  const renderPosts = async () => {
+    const Token = JSON.parse(
+      localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
+    );
+    try {
+      const response = await api.get('/posts', {
+        headers: {
+          Authorization: `Bearer ${Token}`,
+        },
+      });
+      setUserPosts(response.data);
+    } catch (error) {
+      toast.error('Ops! Algo deu errado...');
+    }
+  };
+
   return (
     <ProfileContext.Provider
       value={{
         uploadLink,
         deleteLink,
         links,
+        userPosts,
       }}
     >
       {children}

@@ -22,9 +22,9 @@ export const Form = () => {
   return <div>
               <StyledFormLink onSubmit={handleSubmit(submit)}>
                 <input type='text' 
-                 placeholder='Seu Link'
+                 placeholder='URL Link'
                  {...register('link')}/>
-                 <button>Submit</button>
+                 <button>Add</button>
               </StyledFormLink>       
         </div>
 

@@ -25,4 +25,8 @@ export const StyledFieldset = styled.fieldset`
 	& > button:hover {
 		filter: invert(90%);
 	}
+
+	p {
+		color: ${({theme}) => theme.colors.white};
+	}
 `
