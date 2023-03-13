@@ -1,18 +1,18 @@
-export interface iPostContext {
-  posts: iPostBody[];
+export interface IPostContext {
+  posts: IPostBody[];
   userFormatted: (user: string) => string;
-  CreatePost: (data: iPostBody) => Promise<void>;
+  createPost: (data: IPostBody) => Promise<void>;
   liked: boolean;
   setLiked: React.Dispatch<React.SetStateAction<boolean>>;
   likes: number;
   setLikes: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export interface iPostCardProp {
-  card: iPostBody;
+export interface IPostCardProp {
+  card: IPostBody;
 }
 
-export interface iPostBody {
+export interface IPostBody {
   title: string;
   text: string;
   userId: number;

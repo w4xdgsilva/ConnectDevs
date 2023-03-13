@@ -1,15 +1,15 @@
 import {
   MdInsertComment,
   MdThumbDownOffAlt,
-  MdThumbUpOffAlt
+  MdThumbUpOffAlt,
 } from 'react-icons/md';
 import { useContext } from 'react';
 import { StyledPostCard } from './StyledPostCard';
-import { iPostCardProp } from '../../../providers/PostsContext/@types';
+import { IPostCardProp } from '../../../providers/PostsContext/@types';
 import { StyledParagraph } from '../../../styles/typography';
 import { PostsContext } from '../../../providers/PostsContext/PostsContext';
 
-export const PostCard = ({ card }: iPostCardProp) => {
+export const PostCard = ({ card }: IPostCardProp) => {
   const { liked, setLiked, likes, setLikes } = useContext(PostsContext);
   return (
     <StyledPostCard>
