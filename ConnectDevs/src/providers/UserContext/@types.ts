@@ -1,19 +1,19 @@
-export interface iDefaultProviderProps {
+export interface IDefaultProviderProps {
   children: React.ReactNode;
 }
 
-export interface iDefaultErrorResponse {
+export interface IDefaultErrorResponse {
   data: string;
 }
 
-export interface iUserData {
+export interface IUserData {
   id: number;
   name: string;
   email: string;
   username: string;
 }
 
-export interface iRegisterFormData {
+export interface IRegisterFormData {
   name: string;
   email: string;
   username: string;
@@ -21,12 +21,12 @@ export interface iRegisterFormData {
   confirmPassword: string;
 }
 
-export interface iLoginFormData {
+export interface ILoginFormData {
   email: string;
   password: string;
 }
 
-export interface iApiUserResponseData {
+export interface IApiUserResponseData {
   accessToken: string;
   user: {
     id: string;
@@ -36,7 +36,7 @@ export interface iApiUserResponseData {
   };
 }
 
-export interface iApiAutoLoginResponseData {
+export interface IApiAutoLoginResponseData {
   id: number;
   name: string;
   email: string;
@@ -45,21 +45,21 @@ export interface iApiAutoLoginResponseData {
   confirmPassword?: string;
 }
 
-export interface iUserContext {
+export interface IUserContext {
   isLoading: boolean;
   setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
-  userRegister: (formData: iRegisterFormData) => Promise<void>;
-  userLogin: (formData: iLoginFormData) => Promise<void>;
+  userRegister: (formData: IRegisterFormData) => Promise<void>;
+  userLogin: (formData: ILoginFormData) => Promise<void>;
   userLogout: () => void;
-  userData: iUserData | null;
-  getUser: (id: iUserId) => Promise<iGetUser | null>;
+  userData: IUserData | null;
+  getUser: (id: IUserId) => Promise<IGetUser | null>;
 }
 
-export interface iUserId {
-  userId: iGetUser['id'];
+export interface IUserId {
+  userId: IGetUser['id'];
 }
 
-export interface iGetUser {
+export interface IGetUser {
   email: string;
   password: string;
   name: string;

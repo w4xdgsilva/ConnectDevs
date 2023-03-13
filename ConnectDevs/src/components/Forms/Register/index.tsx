@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerFormSchema } from './RegisterFormSchema';
 import { Input } from '../Input';
-import { iRegisterFormData } from '../../../providers/UserContext/@types';
+import { IRegisterFormData } from '../../../providers/UserContext/@types';
 import { UserContext } from '../../../providers/UserContext/UserContext';
 import Spinner from '../../Spinner/Spinner';
 import { StyledButton } from '../../../styles/button';
@@ -14,11 +14,11 @@ export const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iRegisterFormData>({ resolver: yupResolver(registerFormSchema) });
+  } = useForm<IRegisterFormData>({ resolver: yupResolver(registerFormSchema) });
 
   const { userRegister, isLoading } = useContext(UserContext);
 
-  const submitEvent = (formData: iRegisterFormData) => {
+  const submitEvent = (formData: IRegisterFormData) => {
     userRegister(formData);
   };
 
