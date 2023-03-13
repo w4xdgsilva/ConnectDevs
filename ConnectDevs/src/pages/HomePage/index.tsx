@@ -5,6 +5,7 @@ import { CreatePostForm } from '../../components/Forms/CreatePost';
 import { PostsProvider } from '../../providers/PostsContext/PostsContext';
 
 export const HomePage = () => (
+  
   <PostsProvider>
     <Header />
     <main className='user__main'>
@@ -12,4 +13,5 @@ export const HomePage = () => (
       <PostsList />
     </main>
   </PostsProvider>
+  
 );

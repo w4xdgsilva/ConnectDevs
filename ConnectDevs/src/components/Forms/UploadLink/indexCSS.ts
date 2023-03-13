@@ -1,22 +1,25 @@
 import styled from "styled-components";
 
 export const StyledFormLink = styled.form`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-width: 500px;
-height: 200px;
-background-color: gray;
+
 input{
-    width: 200px;
-    height: 50px;
-    margin: auto;
+    width: 250px;
+    height: 40px;
+    border-style: none;
+    border-radius: 8px;
+    background-color: #495057;
+    color: #ffff;
 }
 button{
-    width: 50px;
-    height: 20px;
-    margin: auto;
+    width: 70px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #7C92CC;
+    color: #ffff;
 }
+button:hover{
+            color:#495057;
+            background-color: #ffff;
+        }
 
 `
