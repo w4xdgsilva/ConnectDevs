@@ -11,9 +11,15 @@ import { api } from '../../services/api';
 
 export const ProfileContext = createContext({} as IProfileContext);
 
+<<<<<<< HEAD
 export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
   const [links, setLinks] = useState<ILinks[]>([]);
   const [userPosts, setUserPosts] = useState<IUserPost[]>([]);
+=======
+export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
+  const [links, setLinks] = useState<iLinks[]>([]);
+  const [userPosts, setUserPosts] = useState<iUserPost[]>([]);
+>>>>>>> f464ffba197dd0920b140d17a47e765f5d31f7c8
   const [modalAdd, setModalAdd] = useState(false);
   const [editPost, setEditPost] = useState<IUserPost[] | null>(null);
   const [selectedPost, setSelectedPost] = useState<IUserPost | null>(null);
@@ -21,7 +27,11 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
     localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
   );
 
+<<<<<<< HEAD
   const uploadLink = async (data: IData) => {
+=======
+  const uploadLink = async (data: iData) => {
+>>>>>>> f464ffba197dd0920b140d17a47e765f5d31f7c8
     const userToken = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
     );
