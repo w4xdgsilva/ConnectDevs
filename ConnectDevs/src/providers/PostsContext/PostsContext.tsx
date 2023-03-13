@@ -54,6 +54,7 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
       renderPosts();
       toast.success('Post enviado com sucesso!');
     } catch (error) {
+      console.error(error);
       toast.error('Ops! Algo deu errado...');
     }
   };
