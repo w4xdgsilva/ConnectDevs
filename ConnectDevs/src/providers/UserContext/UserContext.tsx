@@ -12,7 +12,7 @@ import {
   iLoginFormData,
   iApiAutoLoginResponseData,
   iUserId,
-  iGetUser
+  iGetUser,
 } from './@types';
 import { api } from '../../services/api';
 
@@ -20,6 +20,7 @@ export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: iDefaultProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
+
   const [userData, setUserData] = useState<iUserData | null>(null);
 
   const navigate = useNavigate();
@@ -33,8 +34,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     const newId = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
-    const userId = newId?.id
-
+    const userId = newId?.id;
 
     if (userToken) {
       const autoLogin = async () => {
@@ -43,8 +43,8 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
             `/users/${userId}`,
             {
               headers: {
-                Authorization: `Bearer ${userToken}`
-              }
+                Authorization: `Bearer ${userToken}`,
+              },
             }
           );
 
@@ -52,13 +52,12 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
             id: response.data.id,
             name: response.data.name,
             email: response.data.email,
-            username: response.data.username
+            username: response.data.username,
           });
 
           if (currentPage !== '/profilePage') {
             navigate('/');
           }
-
         } catch (error) {
           localStorage.removeItem('@CONNECTDEVS:TOKEN');
           localStorage.removeItem('@CONNECTDEVS:USER');
@@ -84,7 +83,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         id: userId,
         name: response.data.user.name,
         email: response.data.user.email,
-        username: response.data.user.username
+        username: response.data.user.username,
       });
 
       localStorage.setItem(
@@ -123,7 +122,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         id: userId,
         name: response.data.user.name,
         email: response.data.user.email,
-        username: response.data.user.username
+        username: response.data.user.username,
       });
 
       localStorage.setItem(
@@ -193,7 +192,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         userLogin,
         userLogout,
         userData,
-        getUser
+        getUser,
       }}
     >
       {children}

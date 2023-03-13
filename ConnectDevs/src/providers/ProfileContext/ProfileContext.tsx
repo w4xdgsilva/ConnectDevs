@@ -1,27 +1,27 @@
 import { createContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import {
-  iProfileContext,
-  iDefaultProviderProps,
-  iData,
-  iId,
-  iLinks,
-  iUserPost,
+  IProfileContext,
+  IDefaultProviderProps,
+  IData,
+  ILinks,
+  IUserPost,
 } from './@types';
 import { api } from '../../services/api';
 
-export const ProfileContext = createContext({} as iProfileContext);
+export const ProfileContext = createContext({} as IProfileContext);
 
-export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
-  const [links, setLinks] = useState<iLinks[]>([]);
-  const [userPosts, setUserPosts] = useState<iUserPost[]>([]);
-  const [modalAdd, setModalAdd] = useState(false);
-  const [editPost, setEditPost] = useState<iUserPost[] | null>(null);
+export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
+  const [links, setLinks] = useState<ILinks[]>([]);
+  const [userPosts, setUserPosts] = useState<IUserPost[]>([]);
+  const [modalAdd, setModalAdd] = useState<boolean>(false);
+  const [editPost, setEditPost] = useState<IUserPost[] | null>(null);
+  const [selectedPost, setSelectedPost] = useState<IUserPost | null>(null);
   const Token = JSON.parse(
     localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
   );
 
-  const uploadLink = async (data: iData) => {
+  const uploadLink = async (data: IData) => {
     const userToken = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
     );
@@ -40,7 +40,7 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
-  const deleteLink = async (id: iId) => {
+  const deleteLink = async (id: number) => {
     const userToken = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
     );
@@ -89,7 +89,7 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
-  const UpdatePost = async (data: iUserPost, postId: iId) => {
+  const updatePost = async (data: IUserPost, postId: number) => {
     try {
       const response = await api.patch(`/posts/${postId}`, data, {
         headers: {
@@ -106,14 +106,16 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
         }
       });
       toast.success('Post editado');
+
       setEditPost(newPosts);
+      setModalAdd(false);
       renderPosts();
     } catch (error) {
       toast.error('Ops! Algo deu errado...');
     }
   };
 
-  const removePost = async (PostId: iId) => {
+  const removePost = async (PostId: number) => {
     try {
       const response = await api.delete(`/posts/${PostId}`, {
         headers: {
@@ -121,12 +123,19 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
         },
       });
       toast.success('Post excluido');
+      setModalAdd(false);
       renderPosts();
     } catch (error) {
       toast.error('Ops!Algo deu errado...');
     }
   };
-
+  function handleOutsideClick(
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) {
+    if (event.target === event.currentTarget) {
+      setModalAdd(false);
+    }
+  }
   return (
     <ProfileContext.Provider
       value={{
@@ -134,12 +143,15 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
         deleteLink,
         links,
         userPosts,
-        UpdatePost,
+        updatePost,
         removePost,
         editPost,
         setEditPost,
         modalAdd,
         setModalAdd,
+        selectedPost,
+        setSelectedPost,
+        handleOutsideClick,
       }}
     >
       {children}
