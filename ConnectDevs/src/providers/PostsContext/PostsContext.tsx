@@ -1,15 +1,12 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { iPostBody, iPostContext } from './@types';
 import { api } from '../../services/api';
 import { iDefaultProviderProps } from '../UserContext/@types';
-import { UserContext } from '../UserContext/UserContext';
 
 export const PostsContext = createContext({} as iPostContext);
 
 export const PostsProvider = ({ children }: iDefaultProviderProps) => {
-  const { isLoading, setIsLoading } = useContext(UserContext);
-
   const [posts, setPosts] = useState<iPostBody[]>([]);
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(0);
@@ -20,23 +17,20 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
     localStorage.getItem('@CONNECTDEVS:USER') || 'null'
   );
 
-  useEffect(() => {
-    const renderPosts = async () => {
-      if (userToken && userId) {
-        try {
-          const response = await api.get('/posts', {
-            headers: {
-              Authorization: `Bearer ${userToken}`,
-            },
-          });
-          setPosts(response.data);
-        } catch (error) {
-          console.error(error);
-        }
+  const renderPosts = async () => {
+    if (userToken && userId) {
+      try {
+        const response = await api.get('/posts', {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        });
+        setPosts(response.data);
+      } catch (error) {
+        console.error(error);
       }
-    };
-    renderPosts();
-  }, [posts]);
+    }
+  };
 
   const userFormatted = (user: string) => {
     const username = user;
@@ -54,7 +48,7 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      setPosts(response.data);
+      renderPosts();
       toast.success('Post enviado com sucesso!');
     } catch (error) {
       toast.error('Ops! Algo deu errado...');
@@ -70,7 +64,7 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
         liked,
         setLiked,
         likes,
-        setLikes
+        setLikes,
       }}
     >
       {children}
