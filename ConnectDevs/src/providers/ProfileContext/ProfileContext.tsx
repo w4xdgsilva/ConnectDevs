@@ -14,17 +14,12 @@ export const ProfileContext = createContext({} as iProfileContext);
 
 export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
   const [links, setLinks] = useState<iLinks[]>([]);
-<<<<<<< HEAD
   const [userPosts, setUserPosts] = useState<iUserPost[]>([]);
   const [modalAdd, setModalAdd] = useState(false);
   const [editPost, setEditPost] = useState<iUserPost[] | null>(null);
   const Token = JSON.parse(
     localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
   );
-=======
-
-  const [userPosts, setUserPosts] = useState<iPostBody[]>([]);
->>>>>>> 720ea9cfe56fc46138f3c14faca0851bfa556de5
 
   const uploadLink = async (data: iData) => {
     const userToken = JSON.parse(
