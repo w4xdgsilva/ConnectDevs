@@ -45,6 +45,9 @@ export interface IProfileContext {
   setSelectedPost: React.Dispatch<React.SetStateAction<IUserPost | null>>;
   uploadLink: (data: IData) => Promise<void>;
   deleteLink: (id: number) => Promise<void>;
-  UpdatePost: (data: IUserPost, postId: number) => Promise<void>;
+  updatePost: (data: IUserPost, postId: number) => Promise<void>;
   removePost: (PostId: number) => Promise<void>;
+  handleOutsideClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => void;
 }

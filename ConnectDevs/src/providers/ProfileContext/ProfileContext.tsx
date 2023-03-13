@@ -11,27 +11,17 @@ import { api } from '../../services/api';
 
 export const ProfileContext = createContext({} as IProfileContext);
 
-<<<<<<< HEAD
 export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
   const [links, setLinks] = useState<ILinks[]>([]);
   const [userPosts, setUserPosts] = useState<IUserPost[]>([]);
-=======
-export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
-  const [links, setLinks] = useState<iLinks[]>([]);
-  const [userPosts, setUserPosts] = useState<iUserPost[]>([]);
->>>>>>> f464ffba197dd0920b140d17a47e765f5d31f7c8
-  const [modalAdd, setModalAdd] = useState(false);
+  const [modalAdd, setModalAdd] = useState<boolean>(false);
   const [editPost, setEditPost] = useState<IUserPost[] | null>(null);
   const [selectedPost, setSelectedPost] = useState<IUserPost | null>(null);
   const Token = JSON.parse(
     localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
   );
 
-<<<<<<< HEAD
   const uploadLink = async (data: IData) => {
-=======
-  const uploadLink = async (data: iData) => {
->>>>>>> f464ffba197dd0920b140d17a47e765f5d31f7c8
     const userToken = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
     );
@@ -99,7 +89,7 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
-  const UpdatePost = async (data: IUserPost, postId: number) => {
+  const updatePost = async (data: IUserPost, postId: number) => {
     try {
       const response = await api.patch(`/posts/${postId}`, data, {
         headers: {
@@ -116,7 +106,9 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
         }
       });
       toast.success('Post editado');
+
       setEditPost(newPosts);
+      setModalAdd(false);
       renderPosts();
     } catch (error) {
       toast.error('Ops! Algo deu errado...');
@@ -131,12 +123,19 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
         },
       });
       toast.success('Post excluido');
+      setModalAdd(false);
       renderPosts();
     } catch (error) {
       toast.error('Ops!Algo deu errado...');
     }
   };
-
+  function handleOutsideClick(
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) {
+    if (event.target === event.currentTarget) {
+      setModalAdd(false);
+    }
+  }
   return (
     <ProfileContext.Provider
       value={{
@@ -144,7 +143,7 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
         deleteLink,
         links,
         userPosts,
-        UpdatePost,
+        updatePost,
         removePost,
         editPost,
         setEditPost,
@@ -152,6 +151,7 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
         setModalAdd,
         selectedPost,
         setSelectedPost,
+        handleOutsideClick,
       }}
     >
       {children}

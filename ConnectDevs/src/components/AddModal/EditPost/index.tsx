@@ -1,23 +1,28 @@
 import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { iId, iUserPost } from '../../../providers/ProfileContext/@types';
+import { StyledModalForm } from './style';
+import { IUserPost } from '../../../providers/ProfileContext/@types';
 import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
+
 import { Input } from '../../Forms/Input';
 import { TextArea } from '../../Forms/TextArea';
+import { StyledButton } from '../../../styles/button';
 
 export const EditPost = () => {
-  const { UpdatePost, removePost, selectedPost } = useContext(ProfileContext);
-
+  const { updatePost, removePost, selectedPost } = useContext(ProfileContext);
+  const id = selectedPost?.id;
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iUserPost>();
-  const submitEvent: SubmitHandler<iUserPost> = (data, postId) => {
-    console.log(selectedPost);
+  } = useForm<IUserPost>();
+  const submitEvent: SubmitHandler<IUserPost> = (data, postId) => {
+    if (id) {
+      updatePost(data, id);
+    }
   };
   return (
-    <form onSubmit={handleSubmit(submitEvent)}>
+    <StyledModalForm onSubmit={handleSubmit(submitEvent)}>
       <Input
         label='Titulo'
         placeholder='Titulo'
@@ -27,26 +32,36 @@ export const EditPost = () => {
         hiddenButton={false}
       />
       <TextArea
-        label='Texto'
         placeholder='Digite aqui seu post'
         register={register('text')}
         error={errors.text}
         minRows={2}
       />
-      <button
-        type='submit'
-        title='Editar publicação'
-        aria-label='Editar publicação'
-      >
-        Enviar
-      </button>
-      <button
-        type='button'
-        title='Remover publicação'
-        aria-label='Remover publicação'
-      >
-        Excluir
-      </button>
-    </form>
+      <div className='buttons__area'>
+        <StyledButton
+          $buttonStyle='blue'
+          $buttonSize='default'
+          type='submit'
+          title='Editar publicação'
+          aria-label='Editar publicação'
+        >
+          Enviar
+        </StyledButton>
+        <StyledButton
+          $buttonStyle='gray'
+          $buttonSize='default'
+          type='button'
+          title='Remover publicação'
+          aria-label='Remover publicação'
+          onClick={() => {
+            if (id) {
+              removePost(id);
+            }
+          }}
+        >
+          Excluir
+        </StyledButton>
+      </div>
+    </StyledModalForm>
   );
 };
