@@ -1,11 +1,8 @@
-import { ProfileProvider } from './ProfileContext/ProfileContext';
 import { iDefaultProviderProps } from './UserContext/@types';
 import { UserProvider } from './UserContext/UserContext';
 
 const Providers = ({ children }: iDefaultProviderProps) => (
-  <UserProvider>
-    <ProfileProvider>{children}</ProfileProvider>
-  </UserProvider>
+  <UserProvider>{children}</UserProvider>
 );
 
 export default Providers;
