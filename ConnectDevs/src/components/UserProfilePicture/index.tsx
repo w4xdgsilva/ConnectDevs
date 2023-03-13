@@ -1,8 +1,8 @@
 import React from 'react';
-import { iPostCardProp } from '../../providers/PostsContext/@types';
+import { IPostCardProp } from '../../providers/PostsContext/@types';
 import { StyledParagraph } from '../../styles/typography';
 
-export const UserProfilePicture = ({ card }: iPostCardProp) => (
+export const UserProfilePicture = ({ card }: IPostCardProp) => (
   <StyledParagraph
     fontColor='white'
     title={card.username}
