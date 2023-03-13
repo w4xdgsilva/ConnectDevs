@@ -166,7 +166,6 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     if (userToken && userId) {
       try {
         const response = await api.get<iGetUser>(`/users/${id}`);
-        console.log(response.data);
 
         return response.data;
       } catch (error) {

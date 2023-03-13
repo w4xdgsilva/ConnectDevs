@@ -32,7 +32,7 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      console.log(response.data);
+
       setLinks(response.data);
       renderLink();
     } catch (error) {
@@ -50,7 +50,7 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      console.log(response);
+
       renderLink();
     } catch (error) {
       console.log(error);

@@ -10,8 +10,6 @@ export const LinksList = () => {
 
   const user = JSON.parse(localStorage.getItem('@CONNECTDEVS:USER') || 'null');
 
-  // console.log(links);
-
   return links?.length > 0 ? (
     <StyledListLink>
       <ul>
