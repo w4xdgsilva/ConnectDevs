@@ -22,7 +22,13 @@ export const RegisterPage = () => (
                     Embarque na maior rede de developers do brasil
                 </StyledParagraph>
                 <RegisterForm />
-                <Link to='/login'>Já tem uma conta? Retornar para o login</Link>
+                <Link
+                    to='/login'
+                    title='Acessar página de Login'
+                    aria-label='Acessar página de Login'
+                >
+                    Já tem uma conta? Retornar para o login
+                </Link>
             </section>
         </StyledContainer>
     </StyledRegisterPage>
