@@ -21,6 +21,7 @@ export const Header = () => {
               to='/profilePage'
               title={userData?.username}
               className='user__prof'
+              aria-label='Acessar perfil'
             >
               <StyledParagraph fontColor='white'>
                 {userData?.username.charAt(0)}
@@ -30,6 +31,8 @@ export const Header = () => {
               $buttonSize='medium'
               $buttonStyle='gray'
               type='submit'
+              title='Sair da Conta'
+              aria-label='Sair da Conta'
             >
               Sair
             </StyledButton>
