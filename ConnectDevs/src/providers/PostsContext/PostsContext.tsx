@@ -26,8 +26,8 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
         try {
           const response = await api.get('/posts', {
             headers: {
-              Authorization: `Bearer ${userToken}`
-            }
+              Authorization: `Bearer ${userToken}`,
+            },
           });
           setPosts(response.data);
         } catch (error) {
@@ -51,8 +51,8 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
     try {
       const response = await api.post('/posts', data, {
         headers: {
-          Authorization: `Bearer ${userToken}`
-        }
+          Authorization: `Bearer ${userToken}`,
+        },
       });
       setPosts(response.data);
       toast.success('Post enviado com sucesso!');

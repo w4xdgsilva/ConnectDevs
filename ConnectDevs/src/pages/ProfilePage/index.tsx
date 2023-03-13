@@ -1,9 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { Form } from '../../components/Forms/UploadLink/index';
+import { LinksList } from '../../components/LinksList';
+import { UserPostsList } from '../../components/UserPostsList';
+import { ProfileProvider } from '../../providers/ProfileContext/ProfileContext';
 
 export const ProfilePage = () => (
   <div>
-    <h2>Em Breve</h2>
-    <Link to='/'>Voltar</Link>
+    <ProfileProvider>
+      <Form />
+      <UserPostsList />
+      <LinksList />
+    </ProfileProvider>
   </div>
 );

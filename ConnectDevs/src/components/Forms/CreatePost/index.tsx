@@ -8,6 +8,7 @@ import { iPostBody } from '../../../providers/PostsContext/@types';
 import { PostsContext } from '../../../providers/PostsContext/PostsContext';
 import { StyledContainer } from '../../../styles/grid';
 import { StyledButton } from '../../../styles/button';
+import { TextArea } from '../TextArea';
 
 export const CreatePostForm = () => {
   const {
@@ -30,6 +31,7 @@ export const CreatePostForm = () => {
     CreatePost(data);
   };
   return (
+
     <StyledContainer containerWidth={1250}>
       <form onSubmit={handleSubmit(submitEvent)}>
         <Input
@@ -57,5 +59,7 @@ export const CreatePostForm = () => {
         </StyledButton>
       </form>
     </StyledContainer>
+
+
   );
 };

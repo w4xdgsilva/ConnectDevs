@@ -7,6 +7,7 @@ import { iLoginFormData } from '../../../providers/UserContext/@types';
 import { UserContext } from '../../../providers/UserContext/UserContext';
 import Spinner from '../../Spinner/Spinner';
 import { StyledButton } from '../../../styles/button';
+import { StyledForm } from '../../../styles/form';
 
 export const LoginForm = () => {
   const {
@@ -22,7 +23,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submitEvent)}>
+    <StyledForm onSubmit={handleSubmit(submitEvent)}>
       <Input
         label='Email'
         placeholder='Email'
@@ -44,9 +45,11 @@ export const LoginForm = () => {
         $buttonStyle='blue'
         type='submit'
         disabled={isLoading}
+        title='Entrar na conta'
+        aria-label='Entrar na conta'
       >
         {isLoading ? <Spinner /> : 'Entrar'}
       </StyledButton>
-    </form>
+    </StyledForm>
   );
 };
