@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { iPostCardProp } from '../../../providers/PostsContext/@types';
 import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
 
-export const PostCard = ({ card }: iPostCardProp) => {
+export const UserPostCard = ({ card }: iPostCardProp) => {
   const { setEditPost } = useContext(ProfileContext);
   return (
     <li>

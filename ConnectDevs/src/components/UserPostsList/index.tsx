@@ -1,7 +1,6 @@
 import { useContext } from 'react';
+import { UserPostCard } from './UserPostCard';
 import { ProfileContext } from '../../providers/ProfileContext/ProfileContext';
-
-import { PostCard } from '../PostList/PostCard';
 
 export const UserPostsList = () => {
   const { userPosts } = useContext(ProfileContext);
@@ -11,7 +10,9 @@ export const UserPostsList = () => {
   return userPosts.length > 0 ? (
     <ul>
       {userPosts.map((post) =>
-        post.userId === user.id ? <PostCard key={post.id} card={post} /> : null
+        post.userId === user.id ? (
+          <UserPostCard key={post.id} card={post} />
+        ) : null
       )}
     </ul>
   ) : (
