@@ -10,15 +10,13 @@ export const LinksList = () => {
 
   const user = JSON.parse(localStorage.getItem('@CONNECTDEVS:USER') || 'null');
 
-  console.log(links);
-
   return links?.length > 0 ? (
     <StyledListLink>
       <ul>
         {links.map((item) =>
           item.userId === user.id ? (
             <div>
-            <li>
+            <li key={item.id}>
               <h2>{item.link}</h2>
             </li><button onClick={() => deleteLink(item.id)}>Delete</button>
             </div>
