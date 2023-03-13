@@ -14,6 +14,7 @@ export const ProfileContext = createContext({} as iProfileContext);
 
 export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
   const [links, setLinks] = useState<iLinks[]>([]);
+
   const [userPosts, setUserPosts] = useState<iPostBody[]>([]);
 
   const uploadLink = async (data: iData) => {
@@ -54,6 +55,7 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
 
   useEffect(() => {
     renderLink();
+
     renderPosts();
   }, []);
 
