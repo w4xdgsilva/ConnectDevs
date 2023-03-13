@@ -2,14 +2,16 @@ import React from 'react';
 import { Header } from '../../components/Header';
 import { PostsList } from '../../components/PostList/index';
 import { CreatePostForm } from '../../components/Forms/CreatePost';
+import { PostsProvider } from '../../providers/PostsContext/PostsContext';
 
 export const HomePage = () => (
-  <ProfileProvider>
+  
   <PostsProvider>
     <Header />
-    <CreatePostForm />
-    <PostsList />
-    <LinksList/>
+    <main className='user__main'>
+      <CreatePostForm />
+      <PostsList />
+    </main>
   </PostsProvider>
-  </ProfileProvider>
+  
 );

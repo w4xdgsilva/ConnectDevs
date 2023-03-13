@@ -1,93 +1,98 @@
-import styled, { css } from 'styled-components'
-import BaseTitle from './components/BaseTitle'
+import styled, { css } from 'styled-components';
+import BaseTitle from './components/BaseTitle';
 
 interface IStyledTitleProps {
-	$fontSize: 'one' | 'two' | 'three' | 'four'
-	textAlign?: 'center' | 'left' | 'right'
+  $fontSize: 'one' | 'two' | 'three' | 'four';
+  textAlign?: 'center' | 'left' | 'right';
 }
 
 interface IStyledParagraphProps {
-	fontColor?: 'gray' | 'red';
-	textAlign?: 'center' | 'left' | 'right'
+  fontColor?: 'white' | 'gray' | 'red';
+  textAlign?: 'center' | 'left' | 'right';
 }
 
 export const StyledTitle = styled(BaseTitle)<IStyledTitleProps>`
-	width: 100%;
+  width: 100%;
 
-	font-family: ${({ theme }) => theme.fonts.primary}, sans-serif;
-	line-height: 1.6;
+  font-family: ${({ theme }) => theme.fonts.primary}, sans-serif;
+  line-height: 1.6;
 
-	text-align: ${({ textAlign }) => textAlign};
+  text-align: ${({ textAlign }) => textAlign};
 
-	${({ $fontSize }) => {
-		switch ($fontSize) {
-			case 'one':
-				return css`
-					font-size: 1.625rem;
-					font-weight: 700;
-				`
+  ${({ $fontSize }) => {
+    switch ($fontSize) {
+      case 'one':
+        return css`
+          font-size: 1.625rem;
+          font-weight: 700;
+        `;
 
-			case 'two':
-				return css`
-					font-size: 1.375rem;
-					font-weight: 700;
-				`
+      case 'two':
+        return css`
+          font-size: 1.375rem;
+          font-weight: 700;
+        `;
 
-			case 'three':
-				return css`
-					font-size: 1.125rem;
-					font-weight: 700;
-				`
+      case 'three':
+        return css`
+          font-size: 1.125rem;
+          font-weight: 700;
+        `;
 
-			case 'four':
-				return css`
-					font-size: 1rem;
-					font-weight: 400;
-				`
+      case 'four':
+        return css`
+          font-size: 1rem;
+          font-weight: 400;
+        `;
 
-			default:
-				return css`
-					font-size: 0.875rem;
-					font-weight: 400;
-				`
-		}
-	}}
-`
+      default:
+        return css`
+          font-size: 0.875rem;
+          font-weight: 400;
+        `;
+    }
+  }}
+`;
 
 export const StyledParagraph = styled.p<IStyledParagraphProps>`
-	font-family: ${({ theme }) => theme.fonts.primary};
-	font-size: 0.875rem;
-	font-weight: 400;
-	line-height: 1.8;
+  font-family: ${({ theme }) => theme.fonts.primary};
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.8;
 
-	text-align: ${({ textAlign }) => textAlign};
+  text-align: ${({ textAlign }) => textAlign};
 
-	${({ fontColor, theme }) => {
-		switch (fontColor) {
-			case 'gray':
-				return css`
-					color: ${theme.colors.gray70};
-				`
+  ${({ fontColor, theme }) => {
+    switch (fontColor) {
+      case 'white':
+        return css`
+          color: ${theme.colors.white};
+        `;
 
-			case 'red':
-				return css`
-					color: ${theme.colors.feedback.negative};
-				`
+      case 'gray':
+        return css`
+          color: ${theme.colors.gray70};
+        `;
 
-			default:
-				return css`
-					color: ${theme.colors.gray100};
-				`
-		}
-	}}
+      case 'red':
+        return css`
+          color: ${theme.colors.feedback.negative};
+        `;
 
-	strong {
-		font-weight: 600;
-	}
-`
+      default:
+        return css`
+          color: ${theme.colors.gray100};
+        `;
+    }
+  }}
+
+  strong {
+    font-weight: 600;
+  }
+`;
 
 export const StyledCaption = styled.span`
-	font-family: ${({ theme }) => theme.fonts.primary};
-	font-size: 0.75rem;
-	font-weight: 400;
-`
+  font-family: ${({ theme }) => theme.fonts.primary};
+  font-size: 0.75rem;
+  font-weight: 400;
+`;
