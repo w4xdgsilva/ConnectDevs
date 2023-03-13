@@ -9,7 +9,7 @@ export interface iProfileContext {
   setModalAdd: React.Dispatch<React.SetStateAction<boolean>>;
   uploadLink: (data: iData) => Promise<void>;
   deleteLink: (id: iId) => Promise<void>;
-
+  UpdatePost: (data: iUserPost, postId: iId) => Promise<void>;
   removePost: (PostId: iId) => Promise<void>;
 }
 

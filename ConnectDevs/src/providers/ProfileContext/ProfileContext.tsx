@@ -16,7 +16,7 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
   const [links, setLinks] = useState<iLinks[]>([]);
   const [userPosts, setUserPosts] = useState<iUserPost[]>([]);
   const [modalAdd, setModalAdd] = useState(false);
-  const [editPost, setEditPost] = useState<iUserPost[]>([]);
+  const [editPost, setEditPost] = useState<iUserPost[] | null>(null);
   const Token = JSON.parse(
     localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
   );
@@ -110,38 +110,38 @@ export const ProfileProvider = ({ children }: iDefaultProviderProps) => {
     } catch (error) {
       toast.error('Ops! Algo deu errado...');
     }
-
-    const removePost = async (PostId: iId) => {
-      try {
-        const response = await api.delete(`/posts/${PostId}`, {
-          headers: {
-            Authorization: `Bearer ${Token}`,
-          },
-        });
-        toast.success('Post excluido');
-        renderPosts();
-      } catch (error) {
-        toast.error('Ops!Algo deu errado...');
-      }
-    };
-
-    return (
-      <ProfileContext.Provider
-        value={{
-          uploadLink,
-          deleteLink,
-          links,
-          userPosts,
-
-          removePost,
-          editPost,
-          setEditPost,
-          modalAdd,
-          setModalAdd,
-        }}
-      >
-        {children}
-      </ProfileContext.Provider>
-    );
   };
+
+  const removePost = async (PostId: iId) => {
+    try {
+      const response = await api.delete(`/posts/${PostId}`, {
+        headers: {
+          Authorization: `Bearer ${Token}`,
+        },
+      });
+      toast.success('Post excluido');
+      renderPosts();
+    } catch (error) {
+      toast.error('Ops!Algo deu errado...');
+    }
+  };
+
+  return (
+    <ProfileContext.Provider
+      value={{
+        uploadLink,
+        deleteLink,
+        links,
+        userPosts,
+        UpdatePost,
+        removePost,
+        editPost,
+        setEditPost,
+        modalAdd,
+        setModalAdd,
+      }}
+    >
+      {children}
+    </ProfileContext.Provider>
+  );
 };

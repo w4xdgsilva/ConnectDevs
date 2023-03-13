@@ -8,13 +8,11 @@ import { UserPostsList } from '../../components/UserPostsList';
 import { ProfileProvider } from '../../providers/ProfileContext/ProfileContext';
 
 export const ProfilePage = () => (
-  <div>
-    <ProfileProvider>
-      <EditPost />
-      <Header />
-      <Form />
-      <UserPostsList />
-      <LinksList />
-    </ProfileProvider>
-  </div>
+  <ProfileProvider>
+    <EditPost />
+    <Header />
+    <Form />
+    <UserPostsList />
+    <LinksList />
+  </ProfileProvider>
 );
