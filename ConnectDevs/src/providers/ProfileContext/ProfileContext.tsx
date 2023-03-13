@@ -5,7 +5,7 @@ import {
   IDefaultProviderProps,
   IData,
   ILinks,
-  IUserPost,
+  IUserPost
 } from './@types';
 import { api } from '../../services/api';
 
@@ -29,15 +29,14 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
     try {
       const response = await api.post('/links', data, {
         headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
+          Authorization: `Bearer ${userToken}`
+        }
       });
 
       setLinks(response.data);
       renderLink();
     } catch (error) {
       console.error(error);
-
     }
   };
 
@@ -48,14 +47,13 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
     try {
       const response = await api.delete(`/links/${id}`, {
         headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
+          Authorization: `Bearer ${userToken}`
+        }
       });
 
       renderLink();
     } catch (error) {
       console.error(error);
-
     }
   };
 
@@ -69,13 +67,12 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
     try {
       const response = await api.get('/links', {
         headers: {
-          Authorization: `Bearer ${Token}`,
-        },
+          Authorization: `Bearer ${Token}`
+        }
       });
       setLinks(response.data);
     } catch (error) {
       console.error(error);
-
     }
   };
 
@@ -83,8 +80,8 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
     try {
       const response = await api.get('/posts', {
         headers: {
-          Authorization: `Bearer ${Token}`,
-        },
+          Authorization: `Bearer ${Token}`
+        }
       });
       setUserPosts(response.data);
     } catch (error) {
@@ -97,8 +94,8 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
     try {
       const response = await api.patch(`/posts/${postId}`, data, {
         headers: {
-          Authorization: `Bearer ${Token}`,
-        },
+          Authorization: `Bearer ${Token}`
+        }
       });
 
       const newPosts = userPosts.map((post) => {
@@ -124,8 +121,8 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
     try {
       const response = await api.delete(`/posts/${PostId}`, {
         headers: {
-          Authorization: `Bearer ${Token}`,
-        },
+          Authorization: `Bearer ${Token}`
+        }
       });
       toast.success('Post excluido');
       setModalAdd(false);
@@ -157,7 +154,7 @@ export const ProfileProvider = ({ children }: IDefaultProviderProps) => {
         setModalAdd,
         selectedPost,
         setSelectedPost,
-        handleOutsideClick,
+        handleOutsideClick
       }}
     >
       {children}

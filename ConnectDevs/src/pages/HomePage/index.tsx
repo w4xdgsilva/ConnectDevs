@@ -1,9 +1,9 @@
 import React from 'react';
-import { PostLinksAside } from '../../components/PostList/PostLinksAside/PostLinksAside';
 import { Header } from '../../components/Header';
 import { PostsList } from '../../components/PostList/index';
 import { CreatePostForm } from '../../components/Forms/CreatePost';
 import { PostsProvider } from '../../providers/PostsContext/PostsContext';
+import { AsideProfileLinks } from '../../components/AsideProfileLinks';
 
 export const HomePage = () => (
   <PostsProvider>
@@ -11,7 +11,7 @@ export const HomePage = () => (
     <main className='user__main'>
       <div>
         <CreatePostForm />
-        <PostLinksAside />
+        <AsideProfileLinks />
       </div>
       <PostsList />
     </main>

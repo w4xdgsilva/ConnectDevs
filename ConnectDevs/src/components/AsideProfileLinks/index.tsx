@@ -1,12 +1,22 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../../providers/UserContext/UserContext';
-import { LinksList } from '../LinksList';
+import { LinkCard } from './ProfileListCard';
+import { PostsContext } from '../../providers/PostsContext/PostsContext';
 
 export const AsideProfileLinks = () => {
-  const { userData } = useContext(UserContext);
+  const { selectedUser, userLinks } = useContext(PostsContext);
   return (
     <aside>
-      <LinksList />
+      <ul>
+        {userLinks && userLinks.length > 0 ? (
+          userLinks.map((link) =>
+            link.userId === selectedUser ? (
+              <LinkCard key={link.id} card={link} />
+            ) : null
+          )
+        ) : (
+          <p>Sem links</p>
+        )}
+      </ul>
     </aside>
   );
 };
