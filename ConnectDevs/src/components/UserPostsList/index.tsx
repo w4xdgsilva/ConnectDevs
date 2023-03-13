@@ -5,8 +5,9 @@ import { PostCard } from '../PostList/PostCard';
 
 export const UserPostsList = () => {
   const { userPosts } = useContext(ProfileContext);
+
   const user = JSON.parse(localStorage.getItem('@CONNECTDEVS:USER') || 'null');
-  console.log(userPosts);
+
   return userPosts.length > 0 ? (
     <ul>
       {userPosts.map((post) =>

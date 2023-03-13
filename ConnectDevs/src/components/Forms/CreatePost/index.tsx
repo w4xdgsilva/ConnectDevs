@@ -42,7 +42,6 @@ export const CreatePostForm = () => {
           hiddenButton={false}
         />
         <TextArea
-          label='Texto'
           placeholder='Digite aqui seu post'
           register={register('text')}
           error={errors.text}
