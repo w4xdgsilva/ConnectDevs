@@ -3,8 +3,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { postFormSchema } from './PostFormSchema';
 
+import { StyledCreatePostForm } from './style';
 import { Input } from '../Input';
-import { iPostBody } from '../../../providers/PostsContext/@types';
+import { IPostBody } from '../../../providers/PostsContext/@types';
 import { PostsContext } from '../../../providers/PostsContext/PostsContext';
 import { StyledContainer } from '../../../styles/grid';
 import { StyledButton } from '../../../styles/button';
@@ -15,11 +16,11 @@ export const CreatePostForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iPostBody>({ resolver: yupResolver(postFormSchema) });
+  } = useForm<IPostBody>({ resolver: yupResolver(postFormSchema) });
 
-  const { CreatePost } = useContext(PostsContext);
+  const { createPost } = useContext(PostsContext);
 
-  const submitEvent: SubmitHandler<iPostBody> = (formData) => {
+  const submitEvent: SubmitHandler<IPostBody> = (formData) => {
     const user = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
@@ -28,11 +29,11 @@ export const CreatePostForm = () => {
     const userId = id;
     const data = { ...formData, userId, username };
 
-    CreatePost(data);
+    createPost(data);
   };
   return (
     <StyledContainer containerWidth={1250}>
-      <form onSubmit={handleSubmit(submitEvent)}>
+      <StyledCreatePostForm onSubmit={handleSubmit(submitEvent)}>
         <Input
           label='Titulo'
           placeholder='Titulo'
@@ -47,10 +48,16 @@ export const CreatePostForm = () => {
           error={errors.text}
           minRows={4}
         />
-        <StyledButton $buttonSize='medium' $buttonStyle='blue' type='submit'>
+        <StyledButton
+          $buttonSize='medium'
+          $buttonStyle='blue'
+          type='submit'
+          title='Criar publicação'
+          aria-label='Criar publicação'
+        >
           Enviar
         </StyledButton>
-      </form>
+      </StyledCreatePostForm>
     </StyledContainer>
   );
 };

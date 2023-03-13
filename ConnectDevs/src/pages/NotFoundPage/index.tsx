@@ -27,6 +27,8 @@ export const NotFoundPage = () => (
           to='/login'
           $buttonSize='default'
           $buttonStyle='blue'
+          title='Acessar a página de Login'
+          aria-label='Acessar a página de Login'
         >
           Voltar para a página de Login
         </StyledButtonLink>
