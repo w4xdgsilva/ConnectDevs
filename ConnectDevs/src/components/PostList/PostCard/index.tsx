@@ -1,16 +1,16 @@
 import {
   MdInsertComment,
   MdThumbDownOffAlt,
-  MdThumbUpOffAlt
+  MdThumbUpOffAlt,
 } from 'react-icons/md';
 import { useContext } from 'react';
 import { StyledPostCard } from './StyledPostCard';
-import { iPostCardProp } from '../../../providers/PostsContext/@types';
+import { IPostCardProp } from '../../../providers/PostsContext/@types';
 import { StyledParagraph } from '../../../styles/typography';
 import { PostsContext } from '../../../providers/PostsContext/PostsContext';
 import { UserProfilePicture } from '../../UserProfilePicture';
 
-export const PostCard = ({ card }: iPostCardProp) => {
+export const PostCard = ({ card }: IPostCardProp) => {
   const { liked, setLiked, likes, setLikes } = useContext(PostsContext);
   return (
     <StyledPostCard>
@@ -22,16 +22,28 @@ export const PostCard = ({ card }: iPostCardProp) => {
         <StyledParagraph fontColor='white'>{card.title}</StyledParagraph>
         <StyledParagraph fontColor='white'>{card.text}</StyledParagraph>
         <div className='post__card-interact'>
-          <button title='Like this post!' type='button'>
-            <MdThumbUpOffAlt type='button' fontSize='1.5rem' />
+          <button
+            type='button'
+            title='Curtir este Post'
+            aria-label='Curtir este Post'
+          >
+            <MdThumbUpOffAlt fontSize='1.5rem' />
           </button>
           <StyledParagraph fontColor='white' textAlign='center'>
             {likes}
           </StyledParagraph>
-          <button title='Dislike this post' type='button'>
+          <button
+            type='button'
+            title='Descurtir este Post'
+            aria-label='Descurtir este Post'
+          >
             <MdThumbDownOffAlt fontSize='1.5rem' />
           </button>
-          <button title='Leave a comment!' type='button'>
+          <button
+            type='button'
+            title='Deixar um Comentário'
+            aria-label='Deixar um Comentário'
+          >
             <MdInsertComment fontSize='1.5rem' />
           </button>
         </div>

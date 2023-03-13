@@ -3,24 +3,25 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 import {
-  iUserContext,
-  iDefaultProviderProps,
-  iUserData,
-  iApiUserResponseData,
-  iDefaultErrorResponse,
-  iRegisterFormData,
-  iLoginFormData,
-  iApiAutoLoginResponseData,
-  iUserId,
-  iGetUser
+  IUserContext,
+  IDefaultProviderProps,
+  IUserData,
+  IApiUserResponseData,
+  IDefaultErrorResponse,
+  IRegisterFormData,
+  ILoginFormData,
+  IApiAutoLoginResponseData,
+  IUserId,
+  IGetUser,
 } from './@types';
 import { api } from '../../services/api';
 
-export const UserContext = createContext({} as iUserContext);
+export const UserContext = createContext({} as IUserContext);
 
-export const UserProvider = ({ children }: iDefaultProviderProps) => {
+export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [userData, setUserData] = useState<iUserData | null>(null);
+
+  const [userData, setUserData] = useState<IUserData | null>(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,18 +34,17 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     const newId = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:USER') || 'null'
     );
-    const userId = newId?.id
-
+    const userId = newId?.id;
 
     if (userToken) {
       const autoLogin = async () => {
         try {
-          const response = await api.get<iApiAutoLoginResponseData>(
+          const response = await api.get<IApiAutoLoginResponseData>(
             `/users/${userId}`,
             {
               headers: {
-                Authorization: `Bearer ${userToken}`
-              }
+                Authorization: `Bearer ${userToken}`,
+              },
             }
           );
 
@@ -52,13 +52,12 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
             id: response.data.id,
             name: response.data.name,
             email: response.data.email,
-            username: response.data.username
+            username: response.data.username,
           });
 
           if (currentPage !== '/profilePage') {
             navigate('/');
           }
-
         } catch (error) {
           localStorage.removeItem('@CONNECTDEVS:TOKEN');
           localStorage.removeItem('@CONNECTDEVS:USER');
@@ -71,9 +70,9 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     }
   }, []);
 
-  const userRegister = async (formData: iRegisterFormData) => {
+  const userRegister = async (formData: IRegisterFormData) => {
     try {
-      const response = await api.post<iApiUserResponseData>(
+      const response = await api.post<IApiUserResponseData>(
         '/register',
         formData
       );
@@ -84,7 +83,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         id: userId,
         name: response.data.user.name,
         email: response.data.user.email,
-        username: response.data.user.username
+        username: response.data.user.username,
       });
 
       localStorage.setItem(
@@ -98,7 +97,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
       navigate('/login');
       toast.success('Cadastro realizado com sucesso!');
     } catch (error) {
-      const currentError = error as AxiosError<iDefaultErrorResponse>;
+      const currentError = error as AxiosError<IDefaultErrorResponse>;
 
       const errorMessage = currentError.response?.data;
 
@@ -113,9 +112,9 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
-  const userLogin = async (formData: iLoginFormData) => {
+  const userLogin = async (formData: ILoginFormData) => {
     try {
-      const response = await api.post<iApiUserResponseData>('/login', formData);
+      const response = await api.post<IApiUserResponseData>('/login', formData);
       setIsLoading(true);
       const userId = parseInt(response.data.user.id, 10);
 
@@ -123,7 +122,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         id: userId,
         name: response.data.user.name,
         email: response.data.user.email,
-        username: response.data.user.username
+        username: response.data.user.username,
       });
 
       localStorage.setItem(
@@ -137,7 +136,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
       navigate('/');
       toast.success('Login realizado com sucesso!');
     } catch (error) {
-      const currentError = error as AxiosError<iDefaultErrorResponse>;
+      const currentError = error as AxiosError<IDefaultErrorResponse>;
 
       const errorMessage = currentError.response?.data;
 
@@ -157,7 +156,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
-  const getUser = async (id: iUserId) => {
+  const getUser = async (id: IUserId) => {
     const userToken = JSON.parse(
       localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
     );
@@ -166,8 +165,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     );
     if (userToken && userId) {
       try {
-        const response = await api.get<iGetUser>(`/users/${id}`);
-        console.log(response.data);
+        const response = await api.get<IGetUser>(`/users/${id}`);
 
         return response.data;
       } catch (error) {
@@ -193,7 +191,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         userLogin,
         userLogout,
         userData,
-        getUser
+        getUser,
       }}
     >
       {children}

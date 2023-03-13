@@ -10,17 +10,18 @@ export const LinksList = () => {
 
   const user = JSON.parse(localStorage.getItem('@CONNECTDEVS:USER') || 'null');
 
-  console.log(links);
-
   return links?.length > 0 ? (
     <StyledListLink>
       <ul>
         {links.map((item) =>
           item.userId === user.id ? (
             <div>
-            <li>
-              <h2>{item.link}</h2>
-            </li><button onClick={() => deleteLink(item.id)}>Delete</button>
+              <li>
+                <h2>{item.link}</h2>
+              </li>
+              <button onClick={() => deleteLink(Number(item.id))}>
+                Delete
+              </button>
             </div>
           ) : null
         )}
@@ -28,6 +29,9 @@ export const LinksList = () => {
       <Form />
     </StyledListLink>
   ) : (
-    <><Form /><p>Você ainda não possui nenhum post. Crie seu primeiro post!</p></>
+    <>
+      <Form />
+      <p>Você ainda não possui nenhum post. Crie seu primeiro post!</p>
+    </>
   );
 };

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginFormSchema } from './LoginFormSchema';
 import { Input } from '../Input';
-import { iLoginFormData } from '../../../providers/UserContext/@types';
+import { ILoginFormData } from '../../../providers/UserContext/@types';
 import { UserContext } from '../../../providers/UserContext/UserContext';
 import Spinner from '../../Spinner/Spinner';
 import { StyledButton } from '../../../styles/button';
@@ -14,11 +14,11 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iLoginFormData>({ resolver: yupResolver(loginFormSchema) });
+  } = useForm<ILoginFormData>({ resolver: yupResolver(loginFormSchema) });
 
   const { userLogin, isLoading } = useContext(UserContext);
 
-  const submitEvent = (formData: iLoginFormData) => {
+  const submitEvent = (formData: ILoginFormData) => {
     userLogin(formData);
   };
 
@@ -33,8 +33,8 @@ export const LoginForm = () => {
         error={errors.email}
       />
       <Input
-        label='Password'
-        placeholder='Password'
+        label='Senha'
+        placeholder='Senha'
         type='password'
         hiddenButton
         register={register('password')}

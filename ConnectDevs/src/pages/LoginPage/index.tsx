@@ -22,7 +22,13 @@ export const LoginPage = () => (
                     Entre na maior rede de developers do brasil
                 </StyledParagraph>
                 <LoginForm />
-                <Link to='/register'>Ainda não tem uma conta? Cadastre-se aqui</Link>
+                <Link
+                    to='/register'
+                    title='Acessar página de Cadastro'
+                    aria-label='Acessar página de Cadastro'
+                >
+                    Ainda não tem uma conta? Cadastre-se aqui
+                </Link>
             </section>
         </StyledContainer>
     </StyledLoginPage>

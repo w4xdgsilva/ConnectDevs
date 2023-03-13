@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerFormSchema } from './RegisterFormSchema';
 import { Input } from '../Input';
-import { iRegisterFormData } from '../../../providers/UserContext/@types';
+import { IRegisterFormData } from '../../../providers/UserContext/@types';
 import { UserContext } from '../../../providers/UserContext/UserContext';
 import Spinner from '../../Spinner/Spinner';
 import { StyledButton } from '../../../styles/button';
@@ -14,19 +14,19 @@ export const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iRegisterFormData>({ resolver: yupResolver(registerFormSchema) });
+  } = useForm<IRegisterFormData>({ resolver: yupResolver(registerFormSchema) });
 
   const { userRegister, isLoading } = useContext(UserContext);
 
-  const submitEvent = (formData: iRegisterFormData) => {
+  const submitEvent = (formData: IRegisterFormData) => {
     userRegister(formData);
   };
 
   return (
     <StyledForm onSubmit={handleSubmit(submitEvent)}>
       <Input
-        label='Name'
-        placeholder='Name'
+        label='Nome'
+        placeholder='Nome'
         type='text'
         hiddenButton={false}
         register={register('name')}
@@ -41,24 +41,24 @@ export const RegisterForm = () => {
         error={errors.email}
       />
       <Input
-        label='Username'
-        placeholder='Username'
+        label='Nome de Usuário'
+        placeholder='Nome de Usuário'
         type='text'
         hiddenButton={false}
         register={register('username')}
         error={errors.email}
       />
       <Input
-        label='Password'
-        placeholder='Password'
+        label='Senha'
+        placeholder='Senha'
         type='password'
         hiddenButton
         register={register('password')}
         error={errors.password}
       />
       <Input
-        label='Confirm Password'
-        placeholder='Confirm Password'
+        label='Confirme a Senha'
+        placeholder='Confirme a Senha'
         type='password'
         hiddenButton
         register={register('confirmPassword')}
