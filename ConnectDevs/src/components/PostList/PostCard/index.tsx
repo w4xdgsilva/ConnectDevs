@@ -8,19 +8,14 @@ import { StyledPostCard } from './StyledPostCard';
 import { iPostCardProp } from '../../../providers/PostsContext/@types';
 import { StyledParagraph } from '../../../styles/typography';
 import { PostsContext } from '../../../providers/PostsContext/PostsContext';
+import { UserProfilePicture } from '../../UserProfilePicture';
 
 export const PostCard = ({ card }: iPostCardProp) => {
   const { liked, setLiked, likes, setLikes } = useContext(PostsContext);
   return (
     <StyledPostCard>
       <div className='post__card-top'>
-        <StyledParagraph
-          fontColor='white'
-          title={card.username}
-          className='user__prof'
-        >
-          {card.username.charAt(0)}
-        </StyledParagraph>
+        <UserProfilePicture card={card} />
         <StyledParagraph fontColor='white'>{card.username}</StyledParagraph>
       </div>
       <div className='post__card-bottom'>
