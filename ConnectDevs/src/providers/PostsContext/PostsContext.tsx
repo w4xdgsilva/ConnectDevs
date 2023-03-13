@@ -11,6 +11,8 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
   const { isLoading, setIsLoading } = useContext(UserContext);
 
   const [posts, setPosts] = useState<iPostBody[]>([]);
+  const [liked, setLiked] = useState(false);
+  const [likes, setLikes] = useState(0);
   const userToken = JSON.parse(
     localStorage.getItem('@CONNECTDEVS:TOKEN') || 'null'
   );
@@ -60,7 +62,17 @@ export const PostsProvider = ({ children }: iDefaultProviderProps) => {
   };
 
   return (
-    <PostsContext.Provider value={{ posts, CreatePost, userFormatted }}>
+    <PostsContext.Provider
+      value={{
+        posts,
+        CreatePost,
+        userFormatted,
+        liked,
+        setLiked,
+        likes,
+        setLikes
+      }}
+    >
       {children}
     </PostsContext.Provider>
   );

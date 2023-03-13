@@ -6,6 +6,8 @@ import { postFormSchema } from './PostFormSchema';
 import { Input } from '../Input';
 import { iPostBody } from '../../../providers/PostsContext/@types';
 import { PostsContext } from '../../../providers/PostsContext/PostsContext';
+import { StyledContainer } from '../../../styles/grid';
+import { StyledButton } from '../../../styles/button';
 import { TextArea } from '../TextArea';
 
 export const CreatePostForm = () => {
@@ -29,23 +31,35 @@ export const CreatePostForm = () => {
     CreatePost(data);
   };
   return (
-    <form onSubmit={handleSubmit(submitEvent)}>
-      <Input
-        label='Titulo'
-        placeholder='Titulo'
-        type='text'
-        register={register('title')}
-        error={errors.title}
-        hiddenButton={false}
-      />
-      <TextArea
-        label='Texto'
-        placeholder='Digite aqui seu post'
-        register={register('text')}
-        error={errors.text}
-        minRows={2}
-      />
-      <button type='submit'>Enviar</button>
-    </form>
+
+    <StyledContainer containerWidth={1250}>
+      <form onSubmit={handleSubmit(submitEvent)}>
+        <Input
+          label='Titulo'
+          placeholder='Titulo'
+          type='text'
+          register={register('title')}
+          error={errors.title}
+          hiddenButton={false}
+          multiline={false}
+          rows={0}
+        />
+        <Input
+          label='Texto'
+          placeholder='Digite aqui seu post'
+          type='text'
+          register={register('text')}
+          error={errors.text}
+          hiddenButton={false}
+          multiline
+          rows={2}
+        />
+        <StyledButton $buttonSize='medium' $buttonStyle='blue' type='submit'>
+          Enviar
+        </StyledButton>
+      </form>
+    </StyledContainer>
+
+
   );
 };

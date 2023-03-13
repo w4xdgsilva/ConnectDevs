@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
 	* {
@@ -8,6 +8,18 @@ export const GlobalStyles = createGlobalStyle`
 		border: none;
 		list-style: none;
 		text-decoration: none;
+	}
+
+	body {
+		background-color: ${({ theme }) => theme.colors.gray100};
+	}
+
+	p {
+		color: ${({ theme }) => theme.colors.white}
+	}
+
+	.user__main {
+		margin-top: 120px;
 	}
 
 	button {
@@ -38,4 +50,22 @@ export const GlobalStyles = createGlobalStyle`
     ::-webkit-scrollbar-track:hover {
         background: #343A40;
     }
-`
+
+	.user__prof {
+		cursor: pointer;
+      width: 40px;
+      height: 40px;
+      background-color: ${({ theme }) => theme.colors.secondary};
+      border: 3px solid ${({ theme }) => theme.colors.primary};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+
+	a {
+  		color: inherit;
+  		text-decoration: none;
+	}
+
+`;
