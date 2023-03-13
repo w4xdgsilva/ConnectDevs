@@ -2,11 +2,13 @@ import { iPostBody } from '../PostsContext/@types';
 
 export interface iProfileContext {
   links: iLinks[];
-  userPosts: iPostBody[];
+  userPosts: iUserPost[];
   editPost: iUserPost[] | null;
   setEditPost: React.Dispatch<React.SetStateAction<iUserPost[] | null>>;
   modalAdd: boolean;
   setModalAdd: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedPost: iUserPost | null;
+  setSelectedPost: React.Dispatch<React.SetStateAction<iUserPost | null>>;
   uploadLink: (data: iData) => Promise<void>;
   deleteLink: (id: iId) => Promise<void>;
   UpdatePost: (data: iUserPost, postId: iId) => Promise<void>;
@@ -48,4 +50,7 @@ export interface iUserPost {
   userId: number;
   username: string;
   id: number;
+}
+export interface iUserCardProps {
+  card: iUserPost;
 }

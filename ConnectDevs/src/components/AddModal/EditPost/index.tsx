@@ -2,19 +2,19 @@ import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { iId, iUserPost } from '../../../providers/ProfileContext/@types';
 import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
-import { Input } from '../Input';
-import { TextArea } from '../TextArea';
+import { Input } from '../../Forms/Input';
+import { TextArea } from '../../Forms/TextArea';
 
 export const EditPost = () => {
-  const { UpdatePost, removePost, editPost } = useContext(ProfileContext);
+  const { UpdatePost, removePost, selectedPost } = useContext(ProfileContext);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<iUserPost>();
-  const submitEvent: SubmitHandler<iUserPost> = () => {
-    console.log(editPost);
+  const submitEvent: SubmitHandler<iUserPost> = (data, postId) => {
+    console.log(selectedPost);
   };
   return (
     <form onSubmit={handleSubmit(submitEvent)}>
