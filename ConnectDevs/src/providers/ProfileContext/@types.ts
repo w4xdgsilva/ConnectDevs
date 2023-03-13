@@ -34,6 +34,10 @@ export interface IUserCardProps {
   card: IUserPost;
 }
 
+export interface ILinkCardProps {
+  card: IData;
+}
+
 export interface IProfileContext {
   links: ILinks[];
   userPosts: IUserPost[];

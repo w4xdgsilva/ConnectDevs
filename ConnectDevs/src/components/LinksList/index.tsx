@@ -1,5 +1,3 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/jsx-no-comment-textnodes */
 import { useContext } from 'react';
 import { StyledListLink } from './linksListsCss';
 import { Form } from '../Forms/UploadLink/index';
@@ -21,7 +19,7 @@ export const LinksList = () => {
               <li>
                 <h2>{item.link}</h2>
               </li>
-              <button onClick={() => deleteLink(Number(item.id))}>
+              <button type='button' onClick={() => deleteLink(Number(item.id))}>
                 Delete
               </button>
             </div>
