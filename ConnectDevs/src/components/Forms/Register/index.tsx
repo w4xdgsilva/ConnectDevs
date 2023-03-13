@@ -25,8 +25,8 @@ export const RegisterForm = () => {
   return (
     <StyledForm onSubmit={handleSubmit(submitEvent)}>
       <Input
-        label='Name'
-        placeholder='Name'
+        label='Nome'
+        placeholder='Nome'
         type='text'
         hiddenButton={false}
         register={register('name')}
@@ -41,24 +41,24 @@ export const RegisterForm = () => {
         error={errors.email}
       />
       <Input
-        label='Username'
-        placeholder='Username'
+        label='Nome de Usuário'
+        placeholder='Nome de Usuário'
         type='text'
         hiddenButton={false}
         register={register('username')}
         error={errors.email}
       />
       <Input
-        label='Password'
-        placeholder='Password'
+        label='Senha'
+        placeholder='Senha'
         type='password'
         hiddenButton
         register={register('password')}
         error={errors.password}
       />
       <Input
-        label='Confirm Password'
-        placeholder='Confirm Password'
+        label='Confirme a Senha'
+        placeholder='Confirme a Senha'
         type='password'
         hiddenButton
         register={register('confirmPassword')}
