@@ -7,7 +7,9 @@ import { CreatePostForm } from '../../components/Forms/CreatePost';
 export const HomePage = () => (
   <PostsProvider>
     <Header />
-    <CreatePostForm />
-    <PostsList />
+    <main className='user__main'>
+      <CreatePostForm />
+      <PostsList />
+    </main>
   </PostsProvider>
 );
