@@ -1,56 +1,50 @@
-import { iPostBody } from '../PostsContext/@types';
-
-export interface iProfileContext {
-  links: iLinks[];
-  userPosts: iUserPost[];
-  editPost: iUserPost[] | null;
-  setEditPost: React.Dispatch<React.SetStateAction<iUserPost[] | null>>;
-  modalAdd: boolean;
-  setModalAdd: React.Dispatch<React.SetStateAction<boolean>>;
-  selectedPost: iUserPost | null;
-  setSelectedPost: React.Dispatch<React.SetStateAction<iUserPost | null>>;
-  uploadLink: (data: iData) => Promise<void>;
-  deleteLink: (id: iId) => Promise<void>;
-  UpdatePost: (data: iUserPost, postId: iId) => Promise<void>;
-  removePost: (PostId: iId) => Promise<void>;
-}
-
-export interface iItem {
+export interface IItem {
   item: string;
 }
 
-export interface iLinks {
+export interface ILinks {
   link: string;
   userId: number;
   id: number;
 }
 
-export interface iDefaultProviderProps {
+export interface IDefaultProviderProps {
   children: React.ReactNode;
 }
 
-export interface iData {
+export interface IData {
   link: string;
   userId: number;
 }
 
-export interface iId {
-  id: number;
-}
-
-export interface iInput {
+export interface IInput {
   link: string;
-  data: iData;
+  data: IData;
   userId: number;
 }
 
-export interface iUserPost {
+export interface IUserPost {
   title: string;
   text: string;
   userId: number;
   username: string;
   id: number;
 }
-export interface iUserCardProps {
-  card: iUserPost;
+export interface IUserCardProps {
+  card: IUserPost;
+}
+
+export interface IProfileContext {
+  links: ILinks[];
+  userPosts: IUserPost[];
+  editPost: IUserPost[] | null;
+  setEditPost: React.Dispatch<React.SetStateAction<IUserPost[] | null>>;
+  modalAdd: boolean;
+  setModalAdd: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedPost: IUserPost | null;
+  setSelectedPost: React.Dispatch<React.SetStateAction<IUserPost | null>>;
+  uploadLink: (data: IData) => Promise<void>;
+  deleteLink: (id: number) => Promise<void>;
+  UpdatePost: (data: IUserPost, postId: number) => Promise<void>;
+  removePost: (PostId: number) => Promise<void>;
 }
