@@ -7,10 +7,12 @@ export const StyledListLink = styled.div`
   justify-content: center;
   gap: 15px;
   background: #343a40;
-  width: 400px;
+  width: 100%;
+  min-width: 355px;
+  max-width: 400px;
   height: 250px;
   border-radius: 8px;
-  overflow-y: auto;
+  margin-top: 10rem;
 
   ul {
     display: flex;
@@ -23,12 +25,20 @@ export const StyledListLink = styled.div`
         align-items: center;
         justify-content: center;
         background-color: #495057;
+
         width: 250px;
-        height: 40px;
+        height: 45px;
         color: #ffff;
         border-radius: 8px;
-        h2 {
-          font-size: 12px;
+        overflow: hidden;
+        padding: 3px;
+        p {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          line-height: 1;
         }
       }
       button {
@@ -45,5 +55,10 @@ export const StyledListLink = styled.div`
         background-color: #ffff;
       }
     }
+  }
+  @media (min-width: 800px) {
+    margin-top: 0;
+    position: sticky;
+    top: 0;
   }
 `;

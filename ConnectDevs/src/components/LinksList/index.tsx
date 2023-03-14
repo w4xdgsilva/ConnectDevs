@@ -16,7 +16,7 @@ export const LinksList = () => {
       <ul>
         {links.map((item) =>
           item.userId === user.id ? (
-              <LinksCard key={item.id} card={item} />
+            <LinksCard key={item.id} card={item} />
           ) : null
         )}
       </ul>

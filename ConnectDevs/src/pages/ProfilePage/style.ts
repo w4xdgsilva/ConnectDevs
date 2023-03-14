@@ -6,8 +6,11 @@ export const StyledUserEditsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  @media (min-width: 698px) {
+  position: relative;
+  @media (min-width: 800px) {
     flex-direction: row;
+    align-items: flex-start;
     justify-content: flex-start;
+    margin-top: 10rem;
   }
 `;

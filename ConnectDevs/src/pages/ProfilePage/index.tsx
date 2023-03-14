@@ -18,8 +18,8 @@ export const ProfilePage = () => {
       <StyledContainer containerWidth={1250}>
         <UserProfileHeader />
         <StyledUserEditsContainer>
-          <UserPostsList />
           <LinksList />
+          <UserPostsList />
         </StyledUserEditsContainer>
       </StyledContainer>
       {modalAdd ? <AddModal /> : null}
