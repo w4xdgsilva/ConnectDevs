@@ -5,6 +5,14 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
+  padding: 30px 24px;
+  background-color: ${({ theme }) => theme.colors.gray70};
+  border-radius: 8px;
+  align-items: flex-end;
+
+  button {
+    width: 100%;
+  }
 `;
 
 export const StyledTextArea = styled(TextareaAutosize)`
