@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { UserPostCard } from './UserPostCard';
-import { StyledUserPostList } from './style';
+import { StyledUserPostList } from './styledUserPostsList';
 import { ProfileContext } from '../../providers/ProfileContext/ProfileContext';
 
 export const UserPostsList = () => {

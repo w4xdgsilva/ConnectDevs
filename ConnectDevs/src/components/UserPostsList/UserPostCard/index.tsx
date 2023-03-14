@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useContext } from 'react';
 
-import { StyledUserPostCard } from './style';
+import { StyledUserPostCard } from './styledUserPostCard';
 import { IUserCardProps } from '../../../providers/ProfileContext/@types';
 import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
 import { StyledButton } from '../../../styles/button';
