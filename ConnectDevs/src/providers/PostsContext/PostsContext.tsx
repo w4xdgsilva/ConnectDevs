@@ -9,8 +9,6 @@ export const PostsContext = createContext({} as IPostContext);
 
 export const PostsProvider = ({ children }: IDefaultProviderProps) => {
   const [posts, setPosts] = useState<IPostBody[]>([]);
-  const [liked, setLiked] = useState(false);
-  const [likes, setLikes] = useState(0);
   const [userLinks, setUserLinks] = useState<ILinks[] | null>(null);
   const [selectedUser, setSelectedUser] = useState<number | null>(null);
   const userToken = JSON.parse(
@@ -84,10 +82,6 @@ export const PostsProvider = ({ children }: IDefaultProviderProps) => {
         posts,
         createPost,
         userFormatted,
-        liked,
-        setLiked,
-        likes,
-        setLikes,
         selectedUser,
         setSelectedUser,
         userLinks,

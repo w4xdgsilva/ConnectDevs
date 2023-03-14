@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledFormLink = styled.form`
-
+margin: 10px;
 input{
     width: 250px;
     height: 40px;
@@ -11,6 +11,7 @@ input{
     color: #ffff;
 }
 button{
+    margin-left: 5px;
     width: 70px;
     height: 40px;
     border-radius: 8px;

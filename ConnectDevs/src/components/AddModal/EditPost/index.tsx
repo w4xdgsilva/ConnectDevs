@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { StyledModalForm } from './style';
+import { StyledModalForm } from './styledEditPost';
 import { IUserPost } from '../../../providers/ProfileContext/@types';
 import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
 
@@ -15,10 +15,12 @@ export const EditPost = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<IUserPost>();
   const submitEvent: SubmitHandler<IUserPost> = (data, postId) => {
     if (id) {
       updatePost(data, id);
+      reset();
     }
   };
   return (
