@@ -37,6 +37,7 @@ ul{
             border-radius: 8px;
             background-color: #7C92CC;
             color: #ffff;
+            margin-left: 5px;
         }
         button:hover{
             color:#495057;

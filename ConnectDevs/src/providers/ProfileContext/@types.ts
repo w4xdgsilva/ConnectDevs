@@ -13,6 +13,7 @@ export interface IDefaultProviderProps {
 }
 
 export interface IData {
+  id: number;
   link: string;
   userId: number;
 }
@@ -21,6 +22,7 @@ export interface IInput {
   link: string;
   data: IData;
   userId: number;
+  id: number;
 }
 
 export interface IUserPost {

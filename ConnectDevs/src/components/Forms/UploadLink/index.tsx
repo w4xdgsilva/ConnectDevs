@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { StyledFormLink } from './indexCSS';
+import { StyledFormLink } from './StyledFormLinks';
 import { IData, IInput } from '../../../providers/ProfileContext/@types';
 import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
 
@@ -23,12 +23,12 @@ export const Form = () => {
     <div>
       <StyledFormLink onSubmit={handleSubmit(submit)}>
         <input
-          type='text'
-          placeholder='Adicionar URL do Link'
+          type='url'
+          placeholder='URL do Link'
           {...register('link')}
         />
         <button title='Publicar novo Link' aria-label='Publicar novo Link'>
-          Adicionar Link
+          Adicionar
         </button>
       </StyledFormLink>
     </div>
