@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { AddModal } from '../../components/AddModal';
-
 import { Header } from '../../components/Header';
 import { LinksList } from '../../components/LinksList';
 import { UserPostsList } from '../../components/UserPostsList';
+import { UserProfileHeader } from '../../components/UserProfileHeader';
 import { ProfileContext } from '../../providers/ProfileContext/ProfileContext';
 
 export const ProfilePage = () => {
@@ -12,6 +12,7 @@ export const ProfilePage = () => {
   return (
     <>
       <Header />
+      <UserProfileHeader />
       <UserPostsList />
       <LinksList />
       {modalAdd ? <AddModal /> : null}
