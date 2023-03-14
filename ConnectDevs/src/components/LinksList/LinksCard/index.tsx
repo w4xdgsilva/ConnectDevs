@@ -1,19 +1,21 @@
 import { useContext } from 'react';
 import { ILinkCardProps } from '../../../providers/ProfileContext/@types';
 import { ProfileContext } from '../../../providers/ProfileContext/ProfileContext';
+import { StyledParagraph } from '../../../styles/typography';
 
 export const LinksCard = ({ card }: ILinkCardProps) => {
   const { deleteLink } = useContext(ProfileContext);
 
-return (
+  return (
     <div>
-  <li>
-    <h2>{card.link}</h2>
- 
-  </li>
-  <button type='button' onClick={() => deleteLink(Number(card.id))}>
-      Excluir
-    </button>
-  </div>
-)
-}
+      <li>
+        <StyledParagraph fontColor='white' textAlign='left'>
+          {card.link}
+        </StyledParagraph>
+      </li>
+      <button type='button' onClick={() => deleteLink(Number(card.id))}>
+        Excluir
+      </button>
+    </div>
+  );
+};
