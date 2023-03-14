@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { postFormSchema } from './PostFormSchema';
 
-import { StyledCreatePostForm } from './style';
+import { StyledCreatePostForm } from './styledCreatePost';
 import { Input } from '../Input';
 import { IPostBody } from '../../../providers/PostsContext/@types';
 import { PostsContext } from '../../../providers/PostsContext/PostsContext';
@@ -16,6 +16,7 @@ export const CreatePostForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<IPostBody>({ resolver: yupResolver(postFormSchema) });
 
   const { createPost } = useContext(PostsContext);
@@ -30,6 +31,7 @@ export const CreatePostForm = () => {
     const data = { ...formData, userId, username };
 
     createPost(data);
+    reset();
   };
   return (
     <StyledContainer containerWidth={1250}>

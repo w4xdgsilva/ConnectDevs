@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { EditPost } from './EditPost';
-import { BodyContainer, ModalContainer, ModalHeader } from './style';
+import { BodyContainer, ModalContainer, ModalHeader } from './styledAddModal';
 import { ProfileContext } from '../../providers/ProfileContext/ProfileContext';
 import { StyledTitle } from '../../styles/typography';
 
