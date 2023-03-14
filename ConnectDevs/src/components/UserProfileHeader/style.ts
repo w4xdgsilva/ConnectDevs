@@ -10,6 +10,7 @@ export const StyledUserContainer = styled.div`
     div {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 12px;
         width: max-content;
         transform: translateY(133px);
