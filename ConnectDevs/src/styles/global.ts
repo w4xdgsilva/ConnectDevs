@@ -19,7 +19,26 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	.user__main {
-		margin-top: 120px;
+		display: flex;
+    	margin-top: 120px;
+    	flex-direction: row;
+    	justify-content: space-between;
+
+	.user__box {
+		display: flex;
+    	flex-direction: row;
+		gap: 94px;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+		}
+		.user__cont {
+			display: flex;
+    		flex-direction: column;
+    		gap: 94px;
+
+		}
+	}
 	}
 
 	button {

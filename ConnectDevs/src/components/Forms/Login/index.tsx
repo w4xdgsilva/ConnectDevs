@@ -13,7 +13,7 @@ export const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<ILoginFormData>({ resolver: yupResolver(loginFormSchema) });
 
   const { userLogin, isLoading } = useContext(UserContext);
@@ -47,6 +47,7 @@ export const LoginForm = () => {
         disabled={isLoading}
         title='Entrar na conta'
         aria-label='Entrar na conta'
+        className='brand__btn'
       >
         {isLoading ? <Spinner /> : 'Entrar'}
       </StyledButton>
