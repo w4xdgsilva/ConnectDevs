@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { StyledListLink } from './linksListsCss';
+import { StyledListLink } from './StyledLinks';
+import { LinksCard } from './LinksCard';
 import { Form } from '../Forms/UploadLink/index';
 import { ProfileContext } from '../../providers/ProfileContext/ProfileContext';
 
@@ -15,14 +16,7 @@ export const LinksList = () => {
       <ul>
         {links.map((item) =>
           item.userId === user.id ? (
-            <div>
-              <li>
-                <h2>{item.link}</h2>
-              </li>
-              <button type='button' onClick={() => deleteLink(Number(item.id))}>
-                Delete
-              </button>
-            </div>
+              <LinksCard key={item.id} card={item} />
           ) : null
         )}
       </ul>
